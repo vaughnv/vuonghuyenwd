@@ -301,7 +301,7 @@ body img {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url(../images/bg-paper.jpg);
+  background-image: url(../images/bg-paper.webp);
   background-repeat: repeat;
   background-position: left top;
   background-attachment: scroll;
@@ -635,7 +635,7 @@ body img {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url(../images/bg-paper.jpg);
+  background-image: url(../images/bg-paper.webp);
   background-repeat: repeat;
   background-position: left top;
   background-attachment: scroll;
@@ -853,7 +853,7 @@ body img {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url(../images/bg-paper.jpg);
+  background-image: url(../images/bg-paper.webp);
   background-repeat: repeat;
   background-position: left top;
   background-attachment: scroll;
@@ -879,7 +879,7 @@ body img {
 }
 
 #card-gallery .image-split-container .image-part {
-  background-image: url("../images/couple.jpg");
+  background-image: url("../images/couple.webp");
   background-repeat: no-repeat;
   background-position: center center;
   transition: height 0.3s ease;
@@ -925,7 +925,7 @@ body img {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url(../images/bg-paper.jpg);
+  background-image: url(../images/bg-paper.webp);
   background-repeat: repeat;
   background-position: left top;
   background-attachment: scroll;
@@ -986,7 +986,7 @@ body img {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-image: url(../images/bg-paper.jpg);
+  background-image: url(../images/bg-paper.webp);
   background-repeat: repeat;
   background-position: left top;
   background-attachment: scroll;
