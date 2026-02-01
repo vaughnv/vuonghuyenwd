@@ -1044,6 +1044,8 @@ body img {
 
 #card-comments .comment-form .form-control {
   font-size: 14px;
+  border: none;
+  box-shadow: none;
 }
 
 #card-footer {
