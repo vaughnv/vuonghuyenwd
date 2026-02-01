@@ -1,0 +1,1672 @@
+@font-face {
+  font-family: "DancingScript";
+  src: url(../fonts/DancingScript-VariableFont_wght.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Lora";
+  src: url(../fonts/lora-regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "High Spirited";
+  src: url(/templates/002/font/vip-high-spirited.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arcittya-Begatri";
+  src: url(../fonts/vip-arcittya-begatri.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alisheia";
+  src: url(../fonts/vip-alisheia.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Flavinda";
+  src: url(/templates/002/font/flavinda.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ergisa-Regular";
+  src: url(../fonts/vip-ergisa-regular.otf);
+  font-style: normal;
+}
+
+body {
+  background-color: #333;
+  font-family: "Lora" !important;
+  font-size: 16px;
+  --color-primary: rgb(78, 100, 55);
+}
+
+body a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body .btn-link {
+  text-decoration: none;
+  color: inherit;
+  color: #3f51b5;
+}
+
+body img {
+  max-width: 100%;
+}
+
+.card-wrapper {
+  max-width: 575px;
+  margin: auto;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.card-section {
+  position: relative;
+  padding: 50px 0;
+}
+
+.card-banner {
+  position: relative;
+  aspect-ratio: 420/692;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.card-banner .card-banner-inner {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.card-banner .card-banner-inner.title-sm .wedding-name {
+  font-size: 25px;
+  line-height: 2;
+}
+
+.card-banner .card-banner-inner.title-sm .wedding-save-the-date {
+  padding-left: 75px;
+}
+
+.card-banner .card-banner-inner.title-sm .wedding-save-the-date span {
+  font-size: 100px;
+}
+
+.card-banner .wedding-save-the-date {
+  font-family: "High Spirited";
+  font-size: 65px;
+  line-height: 1.5;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding-left: 80px;
+}
+
+.card-banner .wedding-save-the-date span {
+  font-size: 110px;
+  /* line-height: 1.6; */
+  /* color: rgb(255, 255, 255); */
+  /* text-align: center; */
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+}
+
+.card-banner .wedding-name {
+  font-size: 28px;
+  line-height: 1.6;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  margin-top: -5px;
+}
+
+.card-banner .wedding-date {
+  font-size: 25px;
+  line-height: 1;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.card-banner::before {
+  z-index: 0;
+  height: 400px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+  background-image: linear-gradient(rgba(253, 251, 251, 0), rgba(0, 0, 0, 0.61));
+  background-color: initial;
+  background-size: initial;
+  background-origin: initial;
+  background-position: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+}
+
+#groom-bride {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background-color: rgb(37, 50, 24);
+  padding: 50px 40px;
+}
+
+#groom-bride h2.title {
+  font-size: 20px;/* ban dau là 28px */
+  line-height: 1.3;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 55px;
+}
+
+#groom-bride h4.sub-title {
+  font-size: 18px;
+  line-height: 1.3;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#groom-bride .vertical-line {
+  height: 42px;
+  display: inline-block;
+  border-left: 2px solid #fff;
+}
+
+#groom-bride .decor-flower1 {
+  position: absolute;
+  z-index: 0;
+  top: -5%;
+  right: 0;
+  width: 60%;
+}
+
+#groom-bride .decor-flower2 {
+  position: absolute;
+  z-index: 0;
+  bottom: -10%;
+  left: 0;
+  width: 50%;
+}
+
+#groom-bride .gb-box {
+  aspect-ratio: 317/404;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  border-radius: 21px;
+  box-shadow: rgb(0, 0, 0) -5px 13px 7px -15px;
+}
+
+#groom-bride .gb-box .info {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 24px 12px;
+  text-align: center;
+  z-index: 1;
+}
+
+#groom-bride .gb-box .info .label {
+  font-family: "Arcittya-Begatri";
+  font-size: 50px;
+  line-height: 1;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+#groom-bride .gb-box .info .fullname {
+  font-size: 24px;
+  line-height: 1.3;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: -5px;
+}
+
+#groom-bride .gb-box::before {
+  z-index: 0;
+  height: 33%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+  border-radius: 0px 0px 21px 21px;
+  background-image: linear-gradient(rgba(253, 251, 251, 0), rgba(0, 0, 0, 0.71));
+  background-color: initial;
+  background-size: initial;
+  background-origin: initial;
+  background-position: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+}
+
+#groom-bride .gb-box+.gb-box {
+  margin-top: 40px;
+}
+
+#groom-bride .gb-description {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 24px;
+  padding: 16px 0;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+#groom-bride .gb-description:last-child {
+  margin-bottom: 0;
+}
+
+#card-info {
+  position: relative;
+  text-align: center;
+}
+
+#card-info::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url(../images/bg-paper.jpg);
+  background-repeat: repeat;
+  background-position: left top;
+  background-attachment: scroll;
+  background-origin: content-box;
+  filter: brightness(106%);
+}
+
+#card-info .inner {
+  position: relative;
+  z-index: 1;
+  padding: 50px 16px;
+}
+
+#card-info .parents {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+#card-info .parents .parent {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  display: flex;
+  flex-direction: column;
+}
+
+#card-info .parents .parent .label {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* Ensure the address line stays aligned horizontally across columns */
+#card-info .parents .parent .location {
+  margin-top: auto;
+}
+
+/* Names wrapper: helps reserve consistent space when one of the parents is missing */
+#card-info .parents .parent .names {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 3.2em;
+}
+
+/* Desktop: reserve height for up to 2 name lines to avoid large empty gaps */
+@media (min-width: 480px) {
+  /* On desktop, don't force equal column heights; .names min-height keeps addresses aligned */
+  #card-info .parents {
+    gap: 24px;
+  }
+  #card-info .parents .parent .names {
+    min-height: 3.2em; /* 2 lines x line-height 1.6 */
+  }
+}
+
+/* Wider desktop refinements */
+@media (min-width: 768px) {
+  #card-info .parents {
+    gap: 30px;
+  }
+  #card-info .parents .parent {
+    flex: 0 0 47%;
+  }
+  #card-info .parents .parent .location {
+    padding-top: 6px;
+  }
+}
+
+#card-info .signature {
+  text-align: center;
+}
+
+#card-info .signature .signature-inner {
+  position: relative;
+  display: inline-block;
+}
+
+#card-info .signature img {
+  width: 70px;
+}
+
+#card-info .signature .character {
+  font-family: DancingScript;
+  font-size: 50px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+}
+
+#card-info .signature .character.groom {
+  top: 10px;
+  left: 14px;
+}
+
+#card-info .signature .character.bride {
+  top: 25px;
+  left: 23px;
+}
+
+#card-info .welcome-text {
+  margin-top: 24px;
+  font-size: 17px;
+  line-height: 1.3;
+  color: rgb(56, 81, 31);
+  text-align: center;
+}
+
+#card-info .vertical-line {
+  height: 42px;
+  display: inline-block;
+  border-left: 2px solid;
+}
+
+#card-info>.inner>.vertical-line {
+  border-color: rgb(56, 81, 31);
+  margin: 16px auto;
+}
+
+#card-info .groom-bride-names {
+  margin-top: -12px;
+}
+
+#card-info .groom-bride-names .name {
+  font-size: 30px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#card-info .groom-bride-names .name.groom {
+  margin-bottom: -20px;
+}
+
+#card-info .groom-bride-names .name.bride {
+  margin-top: -5px;
+}
+
+#card-info .groom-bride-names .and {
+  font-family: Flavinda;
+  font-size: 67px;
+  line-height: 1;
+  color: rgb(56, 81, 31);
+  text-align: center;
+}
+
+#card-info .date-and-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+#card-info .date-and-time .time {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  text-transform: uppercase;
+  text-align: right;
+  flex: 1;
+}
+
+#card-info .date-and-time .dayofweek {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  text-transform: uppercase;
+  text-align: left;
+  flex: 1;
+}
+
+#card-info .date-and-time .date {
+  font-size: 43px;
+  line-height: 1.1;
+  color: rgb(56, 81, 31);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#card-info .lunar-date {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  text-align: center;
+}
+
+#card-info .locations {
+  margin-top: 20px;
+}
+
+#card-info .locations .label {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgb(56, 81, 31);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+#card-info .location {
+  text-align: center;
+  color: rgb(56, 81, 31);
+  line-height: 1.6;
+}
+
+#card-info .location .name {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+#card-info .location .address {
+  font-size: 16px;
+}
+
+#card-info .location .map-btn {
+  margin-top: 16px;
+  font-size: 21px;
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#card-info .horizontal-line {
+  border-top: 2px dashed var(--color-primary);
+  margin: 32px 24px 12px 24px;
+  opacity: 0.2;
+}
+
+#card-info .wedding-side-title {
+  display: inline-block;
+  margin-top: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 6px 32px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#card-info .dual-events-container {
+  margin-top: 30px;
+}
+
+#card-info .event-block {
+  margin-bottom: 24px;
+}
+
+#card-info .event-block .date-and-time {
+  margin: 16px 0;
+}
+
+#card-photo-just-married {
+  aspect-ratio: 420/280;
+  width: 100%;
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  position: relative;
+}
+
+#card-photo-just-married::before {
+  content: "";
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.5));
+  background-color: initial;
+  background-size: initial;
+  background-origin: initial;
+  background-position: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+}
+
+#card-photo-just-married .text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  z-index: 1;
+  text-align: right;
+}
+
+#card-photo-just-married .text .just {
+  font-family: Flavinda;
+  font-size: 66.05px;
+  line-height: 1;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  display: inline-block;
+}
+
+#card-photo-just-married .text .married {
+  font-family: Ergisa-Regular;
+  font-size: 42.3px;
+  line-height: 1;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: right;
+  margin-top: -8px;
+}
+
+#card-calendar {
+  text-align: center;
+  position: relative;
+}
+
+#card-calendar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url(../images/bg-paper.jpg);
+  background-repeat: repeat;
+  background-position: left top;
+  background-attachment: scroll;
+  background-origin: content-box;
+  filter: brightness(106%);
+}
+
+#card-calendar>.inner {
+  position: relative;
+  z-index: 1;
+  padding: 50px 16px;
+}
+
+#card-calendar .calendar-header {
+  margin-bottom: 30px;
+}
+
+#card-calendar .calendar-header .year {
+  font-family: Ergisa-Regular;
+  font-size: 95.22px;
+  line-height: 1;
+  color: rgb(78, 100, 55);
+  text-align: center;
+  margin-bottom: -45px;
+}
+
+#card-calendar .calendar-header .month {
+  font-family: "High Spirited";
+  font-size: 80.69px;
+  line-height: 1;
+  color: rgb(78, 100, 55);
+  text-align: center;
+}
+
+#card-calendar .mini_calendar {
+  --tb-border-color: transparent;
+  --tb-color: var(--color-primary);
+  --tb-day-color: var(--color-primary);
+  --tb-header-color: var(--color-primary);
+  --tb-color-wedding-day: var(--color-primary);
+  --tb-color-wedding-day-text: var(--color-primary);
+  width: 320px;
+}
+
+#card-calendar .mini_calendar th {
+  text-transform: uppercase;
+}
+
+#card-calendar .mini_calendar table tr td {
+  height: 35px;
+}
+
+#countdown {
+  margin-top: 30px;
+}
+
+#countdown .countdown-title {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgb(78, 100, 55);
+  text-align: center;
+}
+
+#countdown .card-countdown-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--color-primary);
+  padding: 30px 16px;
+}
+
+#countdown .card-countdown-inner h2 {
+  text-transform: uppercase;
+  margin-top: 32px;
+  margin-bottom: 45px;
+  font-size: 90px;
+  line-height: 1;
+}
+
+#countdown .card-countdown-inner h2 span {
+  display: inline-block;
+  position: relative;
+  margin-left: -10%;
+}
+
+#countdown .card-countdown-inner h2 span span {
+  transform: rotate(25deg);
+  position: absolute;
+  left: 40%;
+  top: 22%;
+}
+
+#countdown .card-countdown-inner h3 {
+  text-transform: uppercase;
+  font-size: 21px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+#countdown .card-countdown-inner .img {
+  margin-top: 24px;
+  padding: 0 16px;
+}
+
+#countdown .countdown-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#countdown .box,
+#countdown .colon {
+  font-size: 33px;
+  color: var(--color-primary);
+}
+
+#countdown .colon {
+  padding: 0 12px;
+}
+
+#countdown .box {
+  font-size: 36px;
+  color: rgb(78, 100, 55);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#card-timelines {
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  color: #fff;
+}
+
+#card-timelines>.inner {
+  padding: 50px 35px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#card-timelines .title {
+  font-family: "High Spirited";
+  font-size: 90px;
+  line-height: 1;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+#card-timelines .timelines {
+  margin-bottom: 24px;
+}
+
+#card-timelines .timelines .timeline-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+#card-timelines .timelines .timeline-box .img {
+  width: 60px;
+  text-align: left;
+}
+
+#card-timelines .timelines .timeline-box .img img {
+  max-width: 100%;
+}
+
+#card-timelines .timelines .timeline-box .horizontal-line {
+  width: 50px;
+  border-top: 2px solid #fff;
+  display: inline-block;
+  margin-bottom: 10px
+}
+
+@media (max-width: 768px) {
+    #card-timelines .timelines .timeline-box .content .time {
+        font-size: 16px!important;
+    }
+}
+
+#card-timelines .timelines .timeline-box .content {
+  flex: 1;
+}
+
+#card-timelines .timelines .timeline-box .content .time {
+  font-size: 27px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+#card-timelines .timelines .timeline-box .content .text {
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+#card-gallery {
+  position: relative;
+}
+
+#card-gallery .inner {
+  position: relative;
+  padding: 50px 0;
+}
+
+#card-gallery::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url(../images/bg-paper.jpg);
+  background-repeat: repeat;
+  background-position: left top;
+  background-attachment: scroll;
+  background-origin: content-box;
+  filter: brightness(106%);
+}
+
+#card-gallery .card-gallery-title {
+  font-family: High Spirited;
+  font-size: 87.69px;
+  line-height: 1.6;
+  color: rgb(78, 100, 55);
+  text-align: center;
+}
+
+#card-gallery .image-split-container {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+#card-gallery .image-split-container .image-part {
+  background-image: url("../images/couple.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: height 0.3s ease;
+  overflow: hidden;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+#card-gallery .image-split-container .left-part,
+#card-gallery .image-split-container .right-part {
+  flex: 1;
+  height: 250px;
+  background-size: 300% auto;
+}
+
+#card-gallery .image-split-container .left-part {
+  background-position: 0% center;
+}
+
+#card-gallery .image-split-container .right-part {
+  background-position: 100% center;
+}
+
+#card-gallery .image-split-container .middle-part {
+  width: 33%;
+  flex: none;
+  height: 350px;
+  background-size: 320% auto;
+  background-position: 50% center;
+}
+
+
+#card-gift {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+
+#card-gift::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url(../images/bg-paper.jpg);
+  background-repeat: repeat;
+  background-position: left top;
+  background-attachment: scroll;
+  background-origin: content-box;
+  filter: brightness(106%);
+}
+
+#card-gift .inner {
+  position: relative;
+  padding: 50px 16px;
+  padding-top: 0;
+  border-bottom: 1px dashed var(--color-primary);
+}
+
+#card-gift .card-section-title {
+  font-size: 80px;
+  line-height: 1;
+  color: inherit;
+  margin-bottom: 0;
+  font-family: "High Spirited";
+  color: var(--color-primary);
+  text-align: center;
+}
+
+#card-gift .card-section-subtitle {
+  margin-bottom: 24px;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+#card-gift .present-box {
+  text-align: center;
+}
+
+#card-gift .present-box .present-box-inner {
+  color: var(--color-primary);
+  border: 2px solid currentColor;
+  padding: 16px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: auto;
+  cursor: pointer;
+}
+
+#card-gift .present-box .present-box-inner img {
+  width: 200px;
+}
+
+#card-comments {
+  position: relative;
+}
+
+#card-comments::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url(../images/bg-paper.jpg);
+  background-repeat: repeat;
+  background-position: left top;
+  background-attachment: scroll;
+  background-origin: content-box;
+  filter: brightness(106%);
+}
+
+#card-comments .decor-flower-right {
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  width: 15%;
+}
+
+#card-comments .decor-flower-left {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 20%;
+}
+
+#card-comments .inner {
+  position: relative;
+  padding: 50px 16px;
+  padding-top: 0;
+}
+
+#card-comments .card-section-title {
+  font-size: 80px;
+  line-height: 1;
+  color: inherit;
+  margin-bottom: 0;
+  font-family: "High Spirited";
+  color: var(--color-primary);
+  text-align: center;
+}
+
+#card-comments .card-section-subtitle {
+  margin-bottom: 24px;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+#card-comments .comment-form {
+  background-color: rgba(63, 92, 132, 0.2784313725);
+}
+
+#card-comments .comment-form {
+  background-color: #bbc2b4b3;
+}
+
+#card-comments .comment-form .btn {
+  background-color: var(--color-primary);
+}
+
+#card-comments .comment-form .form-control {
+  font-size: 14px;
+}
+
+#card-footer {
+  aspect-ratio: 420/280;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+#card-footer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#card-footer .card-footer-inner {
+  position: absolute;
+  z-index: 1;
+  color: #fff;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  padding: 24px;
+}
+
+#card-footer .card-footer-inner .title {
+  font-family: Flavinda;
+  font-size: 80.83px;
+  line-height: 1.6;
+  color: rgb(255, 255, 255);
+  text-align: left;
+  margin-right: 58px;
+  margin-bottom: -30px;
+}
+
+#card-footer .card-footer-inner .text {
+  font-size: 14.04px;
+  line-height: 1.6;
+  color: rgb(255, 255, 255);
+  text-align: left;
+  margin-left: auto;
+  display: inline-block;
+}
+
+.photo-grid {
+  -moz-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 5px;
+  column-gap: 5px;
+}
+
+.photo-grid .photo {
+  width: 100%;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.photo-grid .photo img {
+  width: 100%;
+  display: block;
+}
+
+.photo-grid+.view-more {
+  margin-top: 50px;
+}
+
+.photo-grid[data-masonry] {
+  -moz-column-gap: unset;
+  column-gap: unset;
+  -moz-column-count: unset;
+  column-count: unset;
+  margin: 0 -3px;
+}
+
+.photo-grid[data-masonry] .photo {
+  padding: 3px;
+  width: 50%;
+  margin-bottom: 0;
+}
+
+.photo-grid[data-masonry] .photo img {
+  height: auto;
+}
+
+@media screen and (min-width: 480px) {
+  .card-banner .card-banner-inner.title-sm .wedding-name {
+    font-size: 36px;
+    line-height: 1.6;
+  }
+
+  .card-banner .card-banner-inner.title-sm .wedding-save-the-date {
+    padding-left: 80px;
+  }
+
+  .card-banner .card-banner-inner.title-sm .wedding-save-the-date span {
+    font-size: 110px;
+  }
+
+  .card-banner .wedding-save-the-date {
+    font-size: 72px;
+    padding-left: 85px;
+  }
+
+  .card-banner .wedding-save-the-date span {
+    font-size: 117.97px;
+    bottom: -24px;
+  }
+
+  .card-banner .wedding-name {
+    font-size: 42px;
+    margin-top: -15px;
+  }
+
+  .card-banner .wedding-date {
+    font-size: 28px;
+    line-height: 1;
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+
+  #groom-bride h2.title {
+    font-size: 34px;
+  }
+
+  #groom-bride .gb-box .info .label {
+    font-size: 61px;
+  }
+
+  #groom-bride .gb-box .info .fullname {
+    font-size: 30px;
+  }
+
+  #card-info .parents .parent {
+    font-size: 14px;
+  }
+
+  #card-info .welcome-text {
+    font-size: 19px;
+  }
+
+  #card-info .groom-bride-names .name {
+    font-size: 36px;
+  }
+
+  #card-info .groom-bride-names .and {
+    font-size: 67px;
+  }
+
+  #card-info .date-and-time {
+    gap: 20px;
+  }
+
+  #card-info .date-and-time .time {
+    font-size: 17px;
+  }
+
+  #card-info .date-and-time .dayofweek {
+    font-size: 17px;
+  }
+
+  #card-info .date-and-time .date {
+    font-size: 43px;
+  }
+
+  #card-info .lunar-date {
+    font-size: 16px;
+  }
+
+  #card-info .locations .label {
+    font-size: 19px;
+  }
+
+  #card-info .location .name {
+    font-size: 19px;
+  }
+
+  #card-info .location .address {
+    font-size: 16px;
+  }
+
+  #card-info .location .map-btn {
+    font-size: 21px;
+  }
+
+  .image-split-container .left-part,
+  .image-split-container .right-part {
+    height: 260px;
+  }
+
+  .image-split-container .middle-part {
+    width: 33%;
+    height: 350px;
+  }
+
+  #card-timelines .timelines {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #card-timelines .timelines .timeline-box {
+    margin-bottom: 20px;
+  }
+}
+
+/* QR Code Button & Modal */
+.qr-button-section {
+  text-align: center;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, rgba(78, 100, 55, 0.05), rgba(78, 100, 55, 0.15));
+}
+
+.qr-gift-button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(78, 100, 55, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qr-gift-button:hover {
+  background: rgb(56, 81, 31);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(78, 100, 55, 0.4);
+}
+
+.qr-gift-button i {
+  font-size: 22px;
+}
+
+.qr-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s ease;
+}
+
+.qr-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-modal-content {
+  background: white;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.qr-modal-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  color: #333;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-modal-close:hover {
+  background: white;
+  transform: rotate(90deg);
+}
+
+.qr-modal-header {
+  height: 310px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.qr-modal-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.9));
+}
+
+.qr-modal-body {
+  padding: 30px 20px;
+}
+
+.qr-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.qr-card {
+  flex: 1;
+  text-align: center;
+  max-width: 220px;
+  background: white;
+  border: 2px solid rgb(56, 81, 31);
+  border-radius: 15px;
+  padding: 20px 15px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  /* gap: 12px; */
+}
+
+.qr-card-image {
+  background: white;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.qr-card-image img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto
+}
+
+.qr-card-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(56, 81, 31);
+  text-align: center;
+  margin: 8px 0 4px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-card-bank {
+  font-size: 14px;
+  color: rgb(56, 81, 31);
+  text-align: center;
+  margin: 0;
+}
+
+.qr-card-account {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  margin: 0;
+  font-family: monospace;
+  line-height: 1.6;
+}
+
+.qr-card-info p {
+  margin: 5px 0;
+  word-break: break-all;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .qr-card {
+    max-width: 100%;
+  }
+
+  .qr-modal-content {
+    width: 95%;
+    max-width: none;
+  }
+
+  /* .qr-modal-header {
+    height: 150px;
+  } */
+
+  .qr-gift-button {
+    padding: 14px 32px;
+    font-size: 16px;
+  }
+}
+
+#card-love-story .card-section-title {
+  font-family: High Spirited;
+  font-size: 87.69px;
+  line-height: 1.6;
+  color: rgb(78, 100, 55);
+  text-align: center;
+}
+
+#card-love-story {
+  padding: 50px 30px;
+
+}
+
+#card-love-story {
+  margin-bottom: 24px;
+  color: var(--color-primary);
+  text-align: center;
+  font-size: 16px;
+}
+
+#card-love-story .card-section-subtitle {
+  font-size: 16px;
+  padding: 20px 0;
+}
+
+
+/* Love Story Section */
+.love-story-photo {
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+
+.love-story-photo img{
+  border-radius: 20px;
+}
+
+.love-story-timeline {
+  position: relative;
+}
+
+.love-story-timeline .timeline-event {
+  position: relative;
+  padding: 24px;
+}
+
+.love-story-timeline .timeline-event .event-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.love-story-timeline .timeline-event .rings {
+  position: absolute;
+  text-align: center;
+  background: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -32px;
+  z-index: 1;
+  height: 74px;
+}
+
+.love-story-timeline .timeline-event .rings img {
+  height: 100%;
+}
+
+.love-story-timeline .timeline-event+.timeline-event:nth-child(even)::after {
+  margin-top: -2px;
+  box-sizing: content-box;
+  padding-bottom: 1px;
+}
+
+.love-story-timeline .timeline-event:first-of-type {
+  padding-top: 12px;
+}
+
+.love-story-timeline .timeline-event:first-of-type::after {
+  border-top: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.love-story-timeline .timeline-event:last-of-type {
+  padding-bottom: 65px;
+}
+
+.love-story-timeline .timeline-event:last-of-type::after {
+  border-bottom: 2px solid;
+}
+
+.love-story-timeline .timeline-event::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  width: 50%;
+  top: 0;
+  left: 0;
+}
+
+.love-story-timeline .timeline-event::before {
+  content: "\f415";
+  font-family: bootstrap-icons !important;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  font-size: 16px;
+  top: 32px;
+}
+
+.love-story-timeline .timeline-event:nth-child(odd) {
+  text-align: left;
+}
+
+.love-story-timeline .timeline-event:nth-child(odd)::after {
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  border-top: 2px solid;
+  border-bottom-left-radius: 24px;
+  border-top-left-radius: 24px;
+}
+
+.love-story-timeline .timeline-event:nth-child(odd)::before {
+  left: -8px;
+}
+
+.love-story-timeline .timeline-event:nth-child(even) {
+  text-align: right;
+}
+
+.love-story-timeline .timeline-event:nth-child(even)::after {
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-top: 2px solid;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  left: 50%;
+}
+
+.love-story-timeline .timeline-event:nth-child(even)::before {
+  right: -8px;
+}
+
+/* Banner map button styling */
+.card-banner .map-btn {
+  margin-top: 40px;
+  font-size: 21px;
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  background: var(--color-primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(78, 100, 55, 0.4);
+  animation: pulse 1.5s ease-in-out 1s infinite;
+}
+
+.card-banner .map-btn:hover {
+  background: rgb(56, 81, 31);
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.groom-bride-box {
+  display: flex;
+}
+
+.groom-bride-box.nha-gai {
+  flex-direction: column-reverse;
+}
+.groom-bride-box.nha-trai {
+  flex-direction: column;
+}
+
+.groom-bride-box.nha-gai .gb-box.bride {
+  margin-bottom: 40px;
+}
+  
+
+/*# sourceMappingURL=style.css.map */
