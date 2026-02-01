@@ -167,13 +167,6 @@
         return;
     }
 
-    // Escape HTML to prevent XSS
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
     // Handle Comment Form (Sổ lưu bút)
     function initCommentForm() {
         const form = document.getElementById('commentForm');
@@ -204,19 +197,6 @@
             if (success) {
                 showToast('Cảm ơn bạn đã gửi lời chúc!', 'success');
                 form.reset();
-
-                // Add comment to list immediately
-                const commentList = document.getElementById('commentList');
-                if (commentList) {
-                    const newComment = document.createElement('div');
-                    newComment.className = 'comment-item';
-                    newComment.innerHTML = `
-                        <div class="comment-name">${escapeHtml(fullname)}</div>
-                        <div class="comment-text">${escapeHtml(comment)}</div>
-                        <div class="comment-time">Vừa xong</div>
-                    `;
-                    commentList.insertBefore(newComment, commentList.firstChild);
-                }
             } else {
                 showToast('Có lỗi xảy ra, vui lòng thử lại!', 'error');
             }
