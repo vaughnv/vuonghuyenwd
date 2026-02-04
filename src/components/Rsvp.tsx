@@ -1,7 +1,7 @@
 'use client';
 import FadeIn from './anim/FadeIn';
 import { useState } from 'react';
-import { submitToGoogleSheets } from '@/actions/googleSheets';
+import { submitToGoogleSheets } from '@/utils/googleSheets';
 
 export default function Rsvp() {
   const [submitted, setSubmitted] = useState(false);
