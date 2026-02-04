@@ -2,7 +2,9 @@
 @import '../styles/style.css';
 @import '../styles/mini-calendar.css';
 
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
