@@ -1,0 +1,15 @@
+@import '../styles/common.css';
+@import '../styles/style.css';
+@import '../styles/mini-calendar.css';
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
