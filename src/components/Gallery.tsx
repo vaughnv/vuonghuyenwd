@@ -18,7 +18,7 @@ export default function Gallery() {
     <div id="card-gallery" style={{ order: 9 }}>
         <div className="inner">
             <div className="image-split-container">
-                <div className="image-part left-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "0% 25%" }} />
+                <div className="image-part left-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "0% 30%" }} />
                 <div className="image-part middle-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "50% 20%" }} />
                 <div className="image-part right-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "100% 25%" }} />
             </div>
