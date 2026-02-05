@@ -47,14 +47,19 @@ export default function FadeIn({
 
   const combinedStyle = fullWidth ? { width: '100%', ...style } : style;
 
+  const optimizedStyle: CSSProperties = {
+    ...combinedStyle,
+    willChange: 'opacity, transform', 
+  };
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: "-50px" }}
+      viewport={{ once, amount: 0.2, margin: "0px 0px -50px 0px" }}
       variants={variants}
       className={className}
-      style={combinedStyle}
+      style={optimizedStyle}
       id={id}
     >
       {children}

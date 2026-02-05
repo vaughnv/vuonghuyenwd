@@ -49,13 +49,7 @@ export default function Introduction() {
         </FadeIn>
 
         <div className="groom-bride-box nha-trai">
-            <motion.div 
-                className="gb-box groom relative overflow-hidden" 
-                initial={{ opacity: 0, x: -50, rotate: -5 }}
-                whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-            >
+            <FadeIn direction="left" delay={0} className="gb-box groom relative overflow-hidden">
                  <Image 
                     src="/images/1763782517309-groom.webp"
                     alt="Chú rể"
@@ -65,19 +59,13 @@ export default function Introduction() {
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
                  />
-                 <FadeIn direction="up" delay={0.5} className="info relative z-10">
+                 <div className="info relative z-10">
                     <div className="label">Chú rể</div>
                     <div className="fullname">Viết Hiếu</div>
-                 </FadeIn>
-            </motion.div>
+                 </div>
+            </FadeIn>
             
-            <motion.div 
-                className="gb-box bride relative overflow-hidden" 
-                initial={{ opacity: 0, x: 50, rotate: 5 }}
-                whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-            >
+            <FadeIn direction="right" delay={0.2} className="gb-box bride relative overflow-hidden">
                  <Image 
                     src="/images/1763782508033-bride.webp"
                     alt="Cô dâu"
@@ -87,11 +75,11 @@ export default function Introduction() {
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
                  />
-                 <FadeIn direction="up" delay={0.5} className="info relative z-10">
+                 <div className="info relative z-10">
                     <div className="label">Cô dâu</div>
                     <div className="fullname">Ánh Nguyệt</div>
-                 </FadeIn>
-            </motion.div>
+                 </div>
+            </FadeIn>
         </div>
     </div>
   );
