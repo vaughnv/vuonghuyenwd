@@ -10,18 +10,31 @@ export default function MusicPlayer() {
     const handleInteract = () => {
       if (audioRef.current && audioRef.current.paused) {
         audioRef.current.play()
-          .then(() => setIsPlaying(true))
-          .catch((e) => console.log("Audio play failed", e));
+          .then(() => {
+            setIsPlaying(true);
+            cleanup();
+          })
+          .catch((e) => {
+            
+          });
       }
     };
-    
-    document.addEventListener('click', handleInteract, { once: true });
-    document.addEventListener('touchstart', handleInteract, { once: true });
-    
-    return () => {
+
+    const cleanup = () => {
         document.removeEventListener('click', handleInteract);
         document.removeEventListener('touchstart', handleInteract);
+        window.removeEventListener('scroll', handleInteract);
+        window.removeEventListener('wheel', handleInteract);
+        window.removeEventListener('keydown', handleInteract);
     };
+    
+    document.addEventListener('click', handleInteract);
+    document.addEventListener('touchstart', handleInteract);
+    window.addEventListener('scroll', handleInteract);
+    window.addEventListener('wheel', handleInteract);
+    window.addEventListener('keydown', handleInteract);
+    
+    return cleanup;
   }, []);
 
   const toggle = () => {

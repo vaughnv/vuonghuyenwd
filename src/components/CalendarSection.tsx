@@ -9,6 +9,8 @@ const targetDate = new Date('2026-03-07T12:30:00');
 export default function CalendarSection() {
   const { days, hours, minutes, seconds } = useCountdown(targetDate);
 
+  const formatNumber = (num: number) => num.toString().padStart(2, '0');
+
   const renderCalendar = () => {
      const weeks = [
        [1, 2, 3, 4, 5, 6, 7],
@@ -70,13 +72,13 @@ export default function CalendarSection() {
                      We’ll be sharing a home and a life<br/>together in
                  </FadeIn>
                  <FadeIn direction="up" className="countdown-inner">
-                     <div className="box"><div className="value">{days}</div></div>
+                     <div className="box"><div className="value">{formatNumber(days)}</div></div>
                      <div className="colon">:</div>
-                     <div className="box"><div className="value">{hours}</div></div>
+                     <div className="box"><div className="value">{formatNumber(hours)}</div></div>
                      <div className="colon">:</div>
-                     <div className="box"><div className="value">{minutes}</div></div>
+                     <div className="box"><div className="value">{formatNumber(minutes)}</div></div>
                      <div className="colon">:</div>
-                     <div className="box"><div className="value">{seconds}</div></div>
+                     <div className="box"><div className="value">{formatNumber(seconds)}</div></div>
                  </FadeIn>
             </div>
         </div>
