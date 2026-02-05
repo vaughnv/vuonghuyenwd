@@ -23,8 +23,8 @@ export default function Gallery() {
                         src="/images/1763782535978-couple.webp" 
                         alt="Couple Left" 
                         fill
-                        className="object-cover scale-[3] origin-left"
-                        style={{ objectPosition: "0% 30%" }}
+                        className="object-cover"
+                        style={{ objectPosition: "0% 28%" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
                 </FadeIn>
@@ -33,7 +33,7 @@ export default function Gallery() {
                         src="/images/1763782535978-couple.webp" 
                         alt="Couple Middle" 
                         fill
-                        className="object-cover scale-[3.2]"
+                        className="object-cover"
                         style={{ objectPosition: "50% 20%" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
@@ -43,8 +43,8 @@ export default function Gallery() {
                         src="/images/1763782535978-couple.webp" 
                         alt="Couple Right" 
                         fill
-                        className="object-cover scale-[3] origin-right"
-                        style={{ objectPosition: "100% 24%" }}
+                        className="object-cover"
+                        style={{ objectPosition: "100% 28%" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
                 </FadeIn>
