@@ -24,7 +24,7 @@ export default function Gallery() {
                         alt="Couple Left" 
                         fill
                         className="object-cover"
-                        style={{ objectPosition: "0% 28%" }}
+                        style={{ objectPosition: "0% 30%", transform: "scale(3)", transformOrigin: "left center" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
                 </FadeIn>
@@ -34,7 +34,7 @@ export default function Gallery() {
                         alt="Couple Middle" 
                         fill
                         className="object-cover"
-                        style={{ objectPosition: "50% 20%" }}
+                        style={{ objectPosition: "50% 20%", transform: "scale(3.2)", transformOrigin: "center center" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
                 </FadeIn>
@@ -44,7 +44,7 @@ export default function Gallery() {
                         alt="Couple Right" 
                         fill
                         className="object-cover"
-                        style={{ objectPosition: "100% 28%" }}
+                        style={{ objectPosition: "100% 24%", transform: "scale(3)", transformOrigin: "right center" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
                 </FadeIn>
