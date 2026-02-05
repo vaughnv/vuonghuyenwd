@@ -72,7 +72,11 @@ export default function GuestBook() {
                             ></textarea>
                         </div>
                         <div className="text-center">
-                            <button type="submit" className="btn" disabled={isSubmitting}>
+                            <button 
+                                type="submit" 
+                                className="btn px-8 py-3 rounded-full bg-[var(--color-primary)] text-white font-bold uppercase tracking-wider hover:opacity-90 transition-all shadow-lg text-sm md:text-base min-w-[200px]" 
+                                disabled={isSubmitting}
+                            >
                                 {isSubmitting ? 'Đang gửi...' : 'Gửi lời chúc'}
                             </button>
                         </div>
