@@ -51,6 +51,7 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
 
   const handleInteract = () => {
     onInteract();
+    window.dispatchEvent(new Event('play-music'));
   };
 
   if (!isVisible) return null;

@@ -7,32 +7,40 @@ export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    const handleInteract = () => {
+    const playAudio = () => {
       if (audioRef.current && audioRef.current.paused) {
-        audioRef.current.play()
-          .then(() => {
-            setIsPlaying(true);
-            cleanup();
-          })
-          .catch((e) => {
-            
-          });
+        const playPromise = audioRef.current.play();
+        
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+              cleanup();
+            })
+            .catch((e) => {
+              
+            });
+        }
       }
     };
 
     const cleanup = () => {
-        document.removeEventListener('click', handleInteract);
-        document.removeEventListener('touchstart', handleInteract);
-        window.removeEventListener('scroll', handleInteract);
-        window.removeEventListener('wheel', handleInteract);
-        window.removeEventListener('keydown', handleInteract);
+        document.removeEventListener('click', playAudio);
+        document.removeEventListener('touchstart', playAudio);
+        window.removeEventListener('scroll', playAudio);
+        window.removeEventListener('wheel', playAudio);
+        window.removeEventListener('keydown', playAudio);
+        window.removeEventListener('play-music', playAudio);
     };
     
-    document.addEventListener('click', handleInteract);
-    document.addEventListener('touchstart', handleInteract);
-    window.addEventListener('scroll', handleInteract);
-    window.addEventListener('wheel', handleInteract);
-    window.addEventListener('keydown', handleInteract);
+    playAudio();
+
+    document.addEventListener('click', playAudio);
+    document.addEventListener('touchstart', playAudio);
+    window.addEventListener('scroll', playAudio);
+    window.addEventListener('wheel', playAudio);
+    window.addEventListener('keydown', playAudio);
+    window.addEventListener('play-music', playAudio);
     
     return cleanup;
   }, []);
