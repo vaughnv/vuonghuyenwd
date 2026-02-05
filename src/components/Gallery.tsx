@@ -17,37 +17,10 @@ export default function Gallery() {
   return (
     <div id="card-gallery" style={{ order: 9 }}>
         <div className="inner">
-            <div className="image-split-container flex justify-center items-center mt-6 w-full gap-1.5">
-                <FadeIn direction="left" className="image-part left-part relative h-[260px] flex-1 overflow-hidden" >
-                    <Image 
-                        src="/images/1763782535978-couple.webp" 
-                        alt="Couple Left" 
-                        fill
-                        className="object-cover"
-                        style={{ objectPosition: "0% 30%", transform: "scale(3)", transformOrigin: "left center" }}
-                        sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                </FadeIn>
-                <FadeIn direction="up" className="image-part middle-part relative h-[350px] w-1/3 flex-none overflow-hidden">
-                    <Image 
-                        src="/images/1763782535978-couple.webp" 
-                        alt="Couple Middle" 
-                        fill
-                        className="object-cover"
-                        style={{ objectPosition: "50% 20%", transform: "scale(3.2)", transformOrigin: "center center" }}
-                        sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                </FadeIn>
-                <FadeIn direction="right" className="image-part right-part relative h-[260px] flex-1 overflow-hidden">
-                    <Image 
-                        src="/images/1763782535978-couple.webp" 
-                        alt="Couple Right" 
-                        fill
-                        className="object-cover"
-                        style={{ objectPosition: "100% 24%", transform: "scale(3)", transformOrigin: "right center" }}
-                        sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                </FadeIn>
+            <div className="image-split-container">
+                <FadeIn direction="left" className="image-part left-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "0% 25%" }} />
+                <FadeIn direction="up" className="image-part middle-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "50% 20%" }} />
+                <FadeIn direction="right" className="image-part right-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "100% 25%" }} />
             </div>
 
             <FadeIn direction="right" delay={0.3}>
