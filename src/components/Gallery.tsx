@@ -18,9 +18,9 @@ export default function Gallery() {
     <div id="card-gallery" style={{ order: 9 }}>
         <div className="inner">
             <div className="image-split-container">
-                <FadeIn direction="left" className="image-part left-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "0% 25%" }} />
+                <FadeIn direction="left" className="image-part left-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "0% 30%" }} />
                 <FadeIn direction="up" className="image-part middle-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "50% 20%" }} />
-                <FadeIn direction="right" className="image-part right-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "100% 25%" }} />
+                <FadeIn direction="right" className="image-part right-part" style={{ backgroundImage: "url(/images/1763782535978-couple.webp)", backgroundPosition: "100% 24%" }} />
             </div>
 
             <FadeIn direction="right" delay={0.3}>

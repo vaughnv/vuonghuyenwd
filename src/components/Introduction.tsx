@@ -2,20 +2,29 @@
 
 import { motion } from 'framer-motion';
 import FadeIn from './anim/FadeIn';
+import Image from 'next/image';
+
+const MotionImage = motion(Image);
 
 export default function Introduction() {
   return (
     <div id="groom-bride" className="card-section" style={{ order: 2 }}>
-        <motion.img 
+        <MotionImage 
             src="/images/decor-flower1.webp" 
+            alt="Decor Flower 1"
+            width={300}
+            height={300}
             className="decor-flower1" 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
         />
-        <motion.img 
+        <MotionImage 
             src="/images/decor-flower2.webp" 
+            alt="Decor Flower 2"
+            width={300}
+            height={300}
             className="decor-flower2" 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
