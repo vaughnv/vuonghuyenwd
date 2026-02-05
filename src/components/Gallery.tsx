@@ -23,7 +23,7 @@ export default function Gallery() {
                         src="/images/1763782535978-couple.webp" 
                         alt="Couple Left" 
                         fill
-                        className="object-cover"
+                        className="object-cover scale-[3] origin-left"
                         style={{ objectPosition: "0% 30%" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
@@ -33,7 +33,7 @@ export default function Gallery() {
                         src="/images/1763782535978-couple.webp" 
                         alt="Couple Middle" 
                         fill
-                        className="object-cover"
+                        className="object-cover scale-[3.2]"
                         style={{ objectPosition: "50% 20%" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
@@ -43,7 +43,7 @@ export default function Gallery() {
                         src="/images/1763782535978-couple.webp" 
                         alt="Couple Right" 
                         fill
-                        className="object-cover"
+                        className="object-cover scale-[3] origin-right"
                         style={{ objectPosition: "100% 24%" }}
                         sizes="(max-width: 768px) 33vw, 25vw"
                     />
