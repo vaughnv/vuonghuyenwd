@@ -31,7 +31,7 @@ export default function Gallery() {
             
             <div className="photo-grid grid grid-cols-2 gap-1">
                 {images.map((src, i) => (
-                    <FadeIn key={i} direction={i % 2 === 0 ? "left" : "right"} className="photo relative w-full aspect-[3/4]">
+                    <div key={i} className="photo relative w-full aspect-[3/4]">
                         <Image 
                             src={src} 
                             alt={`Memory ${i+1}`} 
@@ -41,7 +41,7 @@ export default function Gallery() {
                             placeholder="blur"
                             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
                         />
-                    </FadeIn>
+                    </div>
                 ))}
             </div>
         </div>
