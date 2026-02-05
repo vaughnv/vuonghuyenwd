@@ -4,8 +4,9 @@ import FadeIn from './anim/FadeIn';
 import { useCountdown } from '@/hooks/useCountdown';
 import { Heart } from 'lucide-react';
 
+const targetDate = new Date('2026-03-07T12:30:00');
+
 export default function CalendarSection() {
-  const targetDate = new Date('2026-03-07T12:30:00');
   const { days, hours, minutes, seconds } = useCountdown(targetDate);
 
   const renderCalendar = () => {
