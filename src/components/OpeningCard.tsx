@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface OpeningCardProps {
   onOpenComplete: () => void;
@@ -59,23 +58,13 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
   return (
     <div
       id="card-opening-sides"
-      className="default"
+      className="default _animating"
       style={cssVars}
       onClick={handleInteract}
     >
-      <motion.div
-        className="card-side right"
-        initial={{ x: 0, opacity: 1 }}
-        animate={{ x: '100%', opacity: 1 }}
-        transition={{ duration: 4, ease: "easeOut", delay: 0.5 }}
-      />
-      
-      <motion.div
-        className="card-side left"
-        initial={{ x: 0, opacity: 1 }}
-        animate={{ x: '-110%', opacity: 1 }}
-        transition={{ duration: 4, ease: "easeOut", delay: 0.5 }}
-      >
+      <div className="card-side right" />
+
+      <div className="card-side left">
         <div className="wedding-save-the-date animate__animated animate__fadeInDownSlow">
           <span>S</span>ave our date
         </div>
@@ -88,7 +77,7 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
           <img src="/images/side-card-icon.webp" alt="" />
         </div>
         <div className="opening-invite">Trân trọng kính mời!</div>
-      </motion.div>
+      </div>
     </div>
   );
 }

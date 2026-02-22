@@ -748,6 +748,9 @@
   animation-fill-mode: forwards;
   --animate-duration: 4s;
   animation-play-state: paused;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 #card-opening-sides.default .card-side.right {
   right: 0;

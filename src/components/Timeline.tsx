@@ -1,9 +1,19 @@
 'use client';
+
+import Image from 'next/image';
 import FadeIn from './anim/FadeIn';
 
 export default function Timeline() {
   return (
-    <div id="card-timelines" style={{ order: 7, backgroundImage: "url(/images/1763782523162-timeline.webp)" }}>
+    <div id="card-timelines" style={{ order: 7 }}>
+        <Image
+          src="/images/1763782523162-timeline.webp"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ objectPosition: '50% 0%' }}
+          sizes="575px"
+        />
         <div className="inner">
             <FadeIn direction="up" className="title">Timeline</FadeIn>
             <div className="timelines">
@@ -14,7 +24,7 @@ export default function Timeline() {
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>17:30</span>
+                            <span>07:00</span>
                         </div>
                         <div className="text">
                             Ăn kem, chụp ảnh với photobooth
@@ -28,7 +38,7 @@ export default function Timeline() {
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>18:00</span>
+                            <span>08:00</span>
                         </div>
                         <div className="text">
                             Tiếp đón khách mời
@@ -42,7 +52,7 @@ export default function Timeline() {
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>19:00</span>
+                            <span>10:00</span>
                         </div>
                         <div className="text">
                             Bắt đầu lễ thành hôn
@@ -56,7 +66,7 @@ export default function Timeline() {
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>19:30</span>
+                            <span>10:30</span>
                         </div>
                         <div className="text">
                             Khai tiệc chúc mừng

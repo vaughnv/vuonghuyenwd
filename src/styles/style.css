@@ -80,10 +80,7 @@ body img {
 .card-banner {
   position: relative;
   aspect-ratio: 420/692;
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  position: relative;
+  overflow: hidden;
 }
 
 .card-banner .card-banner-inner {
@@ -93,6 +90,7 @@ body img {
   bottom: 0;
   width: 100%;
   padding: 50px 0;
+  z-index: 1;
 }
 
 .card-banner .card-banner-inner.title-sm .wedding-name {
@@ -583,6 +581,7 @@ body img {
   left: 0;
   bottom: 0;
   height: 50%;
+  z-index: 1;
   background-image: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.5));
   background-color: initial;
   background-size: initial;
@@ -765,15 +764,13 @@ body img {
 }
 
 #card-timelines {
-  background-size: cover;
-  background-origin: content-box;
-  background-position: 50% 0%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+  position: relative;
   color: #fff;
 }
 
 #card-timelines>.inner {
+  position: relative;
+  z-index: 1;
   padding: 50px 35px;
   background: rgba(0, 0, 0, 0.4);
 }
@@ -1066,11 +1063,12 @@ body img {
   bottom: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 #card-footer .card-footer-inner {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   color: #fff;
   bottom: 0;
   right: 0;
