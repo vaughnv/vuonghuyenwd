@@ -24,10 +24,10 @@ export default function Timeline() {
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>07:00</span>
+                            <span>14:00</span>
                         </div>
                         <div className="text">
-                            Ăn kem, chụp ảnh với photobooth
+                            Chụp ảnh với photobooth
                         </div>
                     </div>
                 </FadeIn>
@@ -38,7 +38,7 @@ export default function Timeline() {
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>08:00</span>
+                            <span>14:30</span>
                         </div>
                         <div className="text">
                             Tiếp đón khách mời
@@ -47,26 +47,12 @@ export default function Timeline() {
                 </FadeIn>
                 <FadeIn direction="up" className="timeline-box">
                     <div className="img">
-                        <img src="/images/icon-tl3.webp" alt="" />
-                    </div>
-                    <div className="horizontal-line"></div>
-                    <div className="content">
-                        <div className="time">
-                            <span>10:00</span>
-                        </div>
-                        <div className="text">
-                            Bắt đầu lễ thành hôn
-                        </div>
-                    </div>
-                </FadeIn>
-                <FadeIn direction="up" className="timeline-box">
-                    <div className="img">
                         <img src="/images/icon-tl4.webp" alt="" />
                     </div>
                     <div className="horizontal-line"></div>
                     <div className="content">
                         <div className="time">
-                            <span>10:30</span>
+                            <span>15:30</span>
                         </div>
                         <div className="text">
                             Khai tiệc chúc mừng
