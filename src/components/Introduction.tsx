@@ -50,34 +50,22 @@ export default function Introduction() {
 
         <div className="groom-bride-box nha-trai">
             <FadeIn direction="left" delay={0} className="gb-box groom relative overflow-hidden">
-                 <Image 
-                    src="/images/1763782517309-groom.webp"
-                    alt="Chú rể"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-                 />
+                 <div className="wedding-photo-placeholder portrait-photo-placeholder">
+                    Ảnh chú rể sẽ cập nhật sau
+                 </div>
                  <div className="info relative z-10">
                     <div className="label">Chú rể</div>
-                    <div className="fullname">Viết Hiếu</div>
+                    <div className="fullname">Hùng Vương</div>
                  </div>
             </FadeIn>
             
             <FadeIn direction="right" delay={0.2} className="gb-box bride relative overflow-hidden">
-                 <Image 
-                    src="/images/1763782508033-bride.webp"
-                    alt="Cô dâu"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-                 />
+                 <div className="wedding-photo-placeholder portrait-photo-placeholder">
+                    Ảnh cô dâu sẽ cập nhật sau
+                 </div>
                  <div className="info relative z-10">
                     <div className="label">Cô dâu</div>
-                    <div className="fullname">Ánh Nguyệt</div>
+                    <div className="fullname">Thu Huyền</div>
                  </div>
             </FadeIn>
         </div>

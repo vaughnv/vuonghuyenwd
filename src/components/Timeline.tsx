@@ -1,19 +1,13 @@
 'use client';
 
-import Image from 'next/image';
 import FadeIn from './anim/FadeIn';
 
 export default function Timeline() {
   return (
     <div id="card-timelines" style={{ order: 7 }}>
-        <Image
-          src="/images/1763782523162-timeline.webp"
-          alt=""
-          fill
-          className="object-cover"
-          style={{ objectPosition: '50% 0%' }}
-          sizes="575px"
-        />
+        <div className="wedding-photo-placeholder timeline-photo-placeholder">
+          Ảnh sẽ cập nhật sau
+        </div>
         <div className="inner">
             <FadeIn direction="up" className="title">Timeline</FadeIn>
             <div className="timelines">

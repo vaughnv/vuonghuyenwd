@@ -4,7 +4,7 @@ import FadeIn from './anim/FadeIn';
 import { useCountdown } from '@/hooks/useCountdown';
 import { Heart } from 'lucide-react';
 
-const targetDate = new Date('2026-03-07T12:30:00');
+const targetDate = new Date('2026-08-09T07:15:00');
 
 export default function CalendarSection() {
   const { days, hours, minutes, seconds } = useCountdown(targetDate);
@@ -13,11 +13,12 @@ export default function CalendarSection() {
 
   const renderCalendar = () => {
      const weeks = [
-       [1, 2, 3, 4, 5, 6, 7],
-       [8, 9, 10, 11, 12, 13, 14],
-       [15, 16, 17, 18, 19, 20, 21],
-       [22, 23, 24, 25, 26, 27, 28],
-       [29, 30, 31, null, null, null, null]
+       [null, null, null, null, null, null, 1],
+       [2, 3, 4, 5, 6, 7, 8],
+       [9, 10, 11, 12, 13, 14, 15],
+       [16, 17, 18, 19, 20, 21, 22],
+       [23, 24, 25, 26, 27, 28, 29],
+       [30, 31, null, null, null, null, null]
      ];
 
      return (
@@ -33,7 +34,7 @@ export default function CalendarSection() {
                {week.map((day, j) => {
                  if (!day) return <td key={j} className="empty"></td>;
                  
-                 const isSpecial = day === 6 || day === 7;
+                 const isSpecial = day === 7 || day === 9;
                  
                  return (
                     <td key={j}>
@@ -60,7 +61,7 @@ export default function CalendarSection() {
         <div className="inner">
             <div className="calendar-header">
                 <FadeIn direction="up" className="year">2026</FadeIn>
-                <FadeIn direction="up" className="month">March</FadeIn>
+                <FadeIn direction="up" className="month">August</FadeIn>
             </div>
             
             <div id="mini-calendar" className="mini_calendar">

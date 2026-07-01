@@ -82,6 +82,32 @@ body img {
   aspect-ratio: 420/692;
   overflow: hidden;
 }
+.wedding-photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f4efe8 0%, #dfe8d9 100%);
+  color: var(--color-primary);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.hero-photo-placeholder,
+.strip-photo-placeholder,
+.timeline-photo-placeholder,
+.footer-photo-placeholder {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-photo-placeholder {
+  background: linear-gradient(180deg, #dde8d5 0%, #6f7d5e 100%);
+  color: rgba(255, 255, 255, 0.86);
+}
+
 
 .card-banner .card-banner-inner {
   text-align: center;
@@ -222,6 +248,12 @@ body img {
   border-radius: 21px;
   box-shadow: rgb(0, 0, 0) -5px 13px 7px -15px;
 }
+#groom-bride .portrait-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  border-radius: 21px;
+}
+
 
 #groom-bride .gb-box .info {
   position: absolute;
@@ -774,6 +806,11 @@ body img {
   padding: 50px 35px;
   background: rgba(0, 0, 0, 0.4);
 }
+#card-timelines .timeline-photo-placeholder {
+  background: linear-gradient(135deg, #6f7d5e 0%, #2f3d25 100%);
+  color: rgba(255, 255, 255, 0.78);
+}
+
 
 #card-timelines .title {
   font-family: "High Spirited";
@@ -876,12 +913,11 @@ body img {
 }
 
 #card-gallery .image-split-container .image-part {
-  background-image: url("/images/couple.webp");
   background-repeat: no-repeat;
   background-position: center center;
   transition: height 0.3s ease;
   overflow: hidden;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.18));
 }
 
 #card-gallery .image-split-container .left-part,
@@ -906,6 +942,20 @@ body img {
   background-size: 320% auto;
   background-position: 50% center;
 }
+#card-gallery .placeholder-split-container .image-part {
+  color: rgba(78, 100, 55, 0.68);
+}
+
+#card-gallery .placeholder-photo-grid {
+  padding: 0 16px;
+}
+
+#card-gallery .placeholder-photo-grid .photo {
+  min-height: 180px;
+  border-radius: 4px;
+  color: rgba(78, 100, 55, 0.68);
+}
+
 
 
 #card-gift {
@@ -1065,6 +1115,11 @@ body img {
   height: 100%;
   z-index: 1;
 }
+#card-footer .footer-photo-placeholder {
+  background: linear-gradient(135deg, #5c6c46 0%, #29351f 100%);
+  color: rgba(255, 255, 255, 0.78);
+}
+
 
 #card-footer .card-footer-inner {
   position: absolute;

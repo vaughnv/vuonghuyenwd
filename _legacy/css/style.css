@@ -879,12 +879,11 @@ body img {
 }
 
 #card-gallery .image-split-container .image-part {
-  background-image: url("../images/couple.webp");
   background-repeat: no-repeat;
   background-position: center center;
   transition: height 0.3s ease;
   overflow: hidden;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.18));
 }
 
 #card-gallery .image-split-container .left-part,
@@ -1136,6 +1135,33 @@ body img {
 .photo-grid[data-masonry] .photo img {
   height: auto;
 }
+
+.photo-placeholder {
+  background: linear-gradient(135deg, #f7f2e9 0%, #e6eadf 100%);
+}
+
+.photo-placeholder span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  color: var(--color-primary);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+#card-gallery .image-split-container .photo-placeholder span {
+  height: 100%;
+  min-height: 0;
+}
+
+.photo-grid .photo.photo-placeholder {
+  min-height: 180px;
+  border: 1px dashed rgba(78, 100, 55, 0.35);
+}
+
 
 @media screen and (min-width: 480px) {
   .card-banner .card-banner-inner.title-sm .wedding-name {

@@ -69,9 +69,9 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
           <span>S</span>ave our date
         </div>
         <div className="opening-names">
-          <div className="name">Viết Hiếu</div>
+          <div className="name">Hùng Vương</div>
           <div className="and">&</div>
-          <div className="name">Ánh Nguyệt</div>
+          <div className="name">Thu Huyền</div>
         </div>
         <div className="seal-icon" aria-hidden="true">
           <img src="/images/side-card-icon.webp" alt="" />
