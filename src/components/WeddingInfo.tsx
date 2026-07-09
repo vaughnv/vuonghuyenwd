@@ -15,7 +15,7 @@ export default function WeddingInfo() {
                         <div className="name mechure">Bà: Trần Thị Thương</div>
                         <div className="name chure">Chú rể: Hùng Vương</div>
                     </div>
-                    <div className="location">Số 601 đường 512B, Thôn Thái Tượng, Xã Tượng Sơn, Tỉnh Thanh Hoá</div>
+                    <div className="location">Số 601 đường 512B, Thôn Thái Tượng, Xã Tượng Lĩnh, Tỉnh Thanh Hoá</div>
                 </FadeIn>
                 <FadeIn direction="right" className="parent">
                     <div className="label">Nhà gái</div>
@@ -31,8 +31,8 @@ export default function WeddingInfo() {
             <FadeIn direction="up" className="signature">
                 <div className="signature-inner">
                     <img src="/images/signature-bg.webp" alt="" />
-                    <div className="character groom">H</div>
-                    <div className="character bride">N</div>
+                    <div className="character groom">V</div>
+                    <div className="character bride">H</div>
                 </div>
             </FadeIn>
 
@@ -54,7 +54,7 @@ export default function WeddingInfo() {
 
             <div className="dual-events-container">
                 <FadeIn direction="up" className="event-block" id="event1">
-                    <div className="wedding-side-title">Lễ Nạp Tài</div>
+                    <div className="wedding-side-title">Lễ Vu Quy</div>
                     <div className="date-and-time">
                         <div className="time">07 giờ 15</div>
                         <div className="vertical-line"></div>
@@ -108,7 +108,7 @@ export default function WeddingInfo() {
                         <div className="label">Địa điểm</div>
                         <div className="location">
                             <div className="name">Tư gia nhà trai</div>
-                            <div className="address">Số 601 đường 512B, Thôn Thái Tượng, Xã Tượng Sơn, Tỉnh Thanh Hoá</div>
+                            <div className="address">Số 601 đường 512B, Thôn Thái Tượng, Xã Tượng Lĩnh, Tỉnh Thanh Hoá</div>
                         </div>
                     </div>
                 </FadeIn>

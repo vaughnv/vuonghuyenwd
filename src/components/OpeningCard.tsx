@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { couple } from '@/data/wedding';
 
 interface OpeningCardProps {
   onOpenComplete: () => void;
@@ -9,16 +11,19 @@ interface OpeningCardProps {
 
 export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardProps) {
   const [isVisible, setIsVisible] = useState(true);
+  const [guest, setGuest] = useState('');
+  const [opening, setOpening] = useState(false);
+  const openedRef = useRef(false);
 
   const cssVars = {
     '--slide-card-max-width': '575px',
-    '--slide-card-color': 'var(--color-primary)',
-    '--slide-card-stripe-color': '#e9e9e9',
+    '--slide-card-color': 'var(--wc-primary)',
+    '--slide-card-stripe-color': 'var(--wc-primary-600)',
     '--slide-card-stripe-size': '3.5%',
     '--slide-seal-size': '78px',
-    '--slide-seal-bg': '#b0852b',
-    '--slide-seal-fg': '#ffffff',
-    '--slide-seal-ring': '#8a6a2a',
+    '--slide-seal-bg': 'var(--wc-gold)',
+    '--slide-seal-fg': 'var(--wc-surface)',
+    '--slide-seal-ring': 'var(--wc-gold-soft)',
     '--slide-save-top': 'calc(10vh + 4px)',
     '--slide-save-left': 'clamp(20px, 6vw, 40px)',
     '--slide-save-size': '52px',
@@ -30,27 +35,32 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
     '--opening-and-size': 'clamp(24px, 5.6vw, 36px)',
     '--opening-and-rotate': '-4deg',
     '--opening-and-margin': '2px 0',
-    '--opening-names-color': 'rgba(255,255,255,0.9)',
+    '--opening-names-color': 'rgba(255,255,255,0.95)',
     '--opening-name-font': "'Dancing Script'",
     '--opening-name-size': 'clamp(26px, 6.5vw, 40px)',
     '--opening-invite-bottom': 'clamp(24px, 6vh, 56px)',
     '--opening-invite-left': 'clamp(24px, 6vw, 44px)',
-    '--opening-invite-color': 'rgba(255,255,255,0.88)',
+    '--opening-invite-color': 'rgba(255,255,255,0.92)',
     '--opening-invite-size': 'clamp(14px, 3.8vw, 18px)',
-  } as React.CSSProperties;
+  } as CSSProperties;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-      onOpenComplete();
-    }, 5000);
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('guest') ?? params.get('to') ?? '';
+    const clean = raw.replace(/[\u0000-\u001f<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 40);
+    if (clean) setGuest(clean);
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [onOpenComplete]);
-
-  const handleInteract = () => {
+  const startOpen = () => {
+    if (openedRef.current) return;
+    openedRef.current = true;
+    setOpening(true);
     onInteract();
     window.dispatchEvent(new Event('play-music'));
+    window.setTimeout(() => {
+      setIsVisible(false);
+      onOpenComplete();
+    }, 4800);
   };
 
   if (!isVisible) return null;
@@ -58,9 +68,11 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
   return (
     <div
       id="card-opening-sides"
-      className="default _animating"
+      className={`default ${opening ? '_animating' : ''}`}
       style={cssVars}
-      onClick={handleInteract}
+      onClick={startOpen}
+      role="button"
+      aria-label="Chạm để mở thiệp"
     >
       <div className="card-side right" />
 
@@ -69,15 +81,17 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
           <span>S</span>ave our date
         </div>
         <div className="opening-names">
-          <div className="name">Hùng Vương</div>
-          <div className="and">&</div>
-          <div className="name">Thu Huyền</div>
+          <div className="name">{couple.groom.name}</div>
+          <div className="and">&amp;</div>
+          <div className="name">{couple.bride.name}</div>
         </div>
         <div className="seal-icon" aria-hidden="true">
           <img src="/images/side-card-icon.webp" alt="" />
         </div>
-        <div className="opening-invite">Trân trọng kính mời!</div>
+        <div className="opening-invite">{guest ? `Kính mời: ${guest}` : 'Trân trọng kính mời!'}</div>
       </div>
+
+      {!opening && <div className="opening-tap-hint">Chạm để mở thiệp</div>}
     </div>
   );
 }

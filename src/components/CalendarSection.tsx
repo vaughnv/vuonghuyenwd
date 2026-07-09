@@ -25,7 +25,7 @@ export default function CalendarSection() {
        <table>
          <thead>
            <tr>
-             <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+            <th>CN</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th>
            </tr>
          </thead>
          <tbody>
@@ -34,7 +34,7 @@ export default function CalendarSection() {
                {week.map((day, j) => {
                  if (!day) return <td key={j} className="empty"></td>;
                  
-                 const isSpecial = day === 7 || day === 9;
+                const isSpecial = day === 7 || day === 8 || day === 9;
                  
                  return (
                     <td key={j}>
@@ -70,7 +70,7 @@ export default function CalendarSection() {
 
             <div id="countdown">
                  <FadeIn direction="up" className="countdown-title">
-                     We’ll be sharing a home and a life<br/>together in
+                     Chúng tôi sẽ cùng nhau bước vào<br/>ngày trọng đại trong
                  </FadeIn>
                  <FadeIn direction="up" className="countdown-inner">
                      <div className="box"><div className="value">{formatNumber(days)}</div></div>

@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // output: 'export', // Uncomment for static export if needed
-  // images: { unoptimized: true }, // Uncomment for static export if needed
-};
+// Deploy (Vercel/SSR): default — enables per-guest metadata.
+// Local static preview: set STATIC_EXPORT=1 to emit a static /out build.
+const isStatic = process.env.STATIC_EXPORT === '1';
+
+const nextConfig = isStatic
+  ? { output: 'export', images: { unoptimized: true } }
+  : {};
 
 export default nextConfig;

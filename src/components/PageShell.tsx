@@ -25,7 +25,7 @@ export default function PageShell({ children }: PageShellProps) {
   }, [isOpened]);
 
   return (
-    <main className="min-h-screen relative miu-order-container max-w-[575px] mx-auto bg-white overflow-hidden shadow-2xl">
+    <main className="min-h-screen relative miu-order-container max-w-[575px] mx-auto overflow-hidden shadow-2xl">
       <OpeningCard
         onOpenComplete={() => setIsOpened(true)}
         onInteract={() => {}}
@@ -33,16 +33,10 @@ export default function PageShell({ children }: PageShellProps) {
 
       {children}
 
-      <MusicPlayer />
+      <MusicPlayer showButton={isOpened} />
 
       <div className="miu-branding" style={{ order: 100 }}>
         <div className="miu-branding__title">Cảm ơn bạn đã dành thời gian xem thiệp cưới của chúng tôi ❤️</div>
-      </div>
-
-      <div className="snowflakes" aria-hidden="true">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <div key={i} className="snowflake">❅</div>
-        ))}
       </div>
     </main>
   );

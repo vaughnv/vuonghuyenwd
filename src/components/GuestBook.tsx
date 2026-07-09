@@ -1,93 +1,200 @@
 'use client';
+
 import FadeIn from './anim/FadeIn';
 import { useState } from 'react';
-import { submitToGoogleSheets } from '@/utils/googleSheets';
+import { getDb, isFirebaseConfigured } from '@/utils/firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import type { FormEvent } from 'react';
 
 export default function GuestBook() {
-  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [sentName, setSentName] = useState('');
+  const [done, setDone] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const configured = isFirebaseConfigured;
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    const formData = new FormData(e.currentTarget);
-    const fullname = formData.get('fullname') as string;
-    const comment = formData.get('comment') as string;
+    setError('');
 
-    const timestamp = new Date().toLocaleString('vi-VN', {
-        timeZone: 'Asia/Ho_Chi_Minh',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
+    const trimmedName = name.trim();
+    const trimmedMessage = message.trim();
 
-    const result = await submitToGoogleSheets('Lưu Bút', [timestamp, fullname, comment]);
-    
-    setIsSubmitting(false);
-    if (result.success) {
-        setSubmitted(true);
-    } else {
-        alert('Có lỗi xảy ra, vui lòng thử lại!');
+    if (!trimmedName || !trimmedMessage) {
+      setError('Vui lòng nhập tên và lời chúc.');
+      return;
     }
-  };
+
+    const db = getDb();
+    if (!db) {
+      setError('Tính năng lời chúc chưa sẵn sàng.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, 'wishes'), {
+        name: trimmedName,
+        message: trimmedMessage,
+        createdAt: serverTimestamp(),
+      });
+      setSentName(trimmedName);
+      setDone(true);
+      setName('');
+      setMessage('');
+    } catch {
+      // Keep the user's typed input so they can retry.
+      setError('Không gửi được lời chúc, vui lòng thử lại.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
-    <div id="card-comments" style={{ order: 10 }}>
-        <img src="/images/bg5.webp" className="decor-flower-right" alt="" />
-        <img src="/images/bg6.webp" className="decor-flower-left" alt="" />
+    <div
+      id="card-comments"
+      style={{ order: 8 }}
+      className="wc-section relative overflow-hidden text-center"
+    >
+      {/* Faint botanical decor */}
+      <img
+        src="/images/bg5.webp"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-6 bottom-6 w-28 select-none"
+        style={{ opacity: 0.2, mixBlendMode: 'multiply' }}
+      />
+      <img
+        src="/images/bg6.webp"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-6 top-10 w-28 select-none"
+        style={{ opacity: 0.2, mixBlendMode: 'multiply' }}
+      />
 
-        <div className="inner">
-            <FadeIn direction="down">
-                <h2 className="card-section-title">Sổ lưu bút</h2>
-            </FadeIn>
-            <FadeIn direction="right">
-                <div className="card-section-subtitle">
-                    Cảm ơn bạn rất nhiều vì đã gửi những lời chúc mừng tốt đẹp nhất đến đám cưới của chúng tôi!
-                </div>
-            </FadeIn>
+      <div className="relative mx-auto w-full max-w-[440px]">
+        <FadeIn direction="down" className="wc-head">
+          <h2 className="wc-title">Sổ lưu bút</h2>
+          <div className="wc-divider">
+            <span />
+          </div>
+        </FadeIn>
 
-            {!submitted ? (
-                <FadeIn className="comment-form">
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group mb-4">
-                            <input 
-                                type="text" 
-                                name="fullname"
-                                className="form-control w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/90 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] placeholder:text-gray-500 text-gray-800" 
-                                placeholder="Nhập tên của bạn*" 
-                                required 
-                            />
-                        </div>
-                        <div className="form-group mb-6">
-                            <textarea 
-                                name="comment"
-                                className="form-control w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/90 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] placeholder:text-gray-500 text-gray-800 min-h-[120px]" 
-                                placeholder="Nhập lời chúc của bạn*" 
-                                required 
-                                rows={3}
-                            ></textarea>
-                        </div>
-                        <div className="text-center">
-                            <button 
-                                type="submit" 
-                                className="btn px-8 py-3 rounded-full bg-[var(--color-primary)] text-white font-bold uppercase tracking-wider hover:opacity-90 transition-all shadow-lg text-sm md:text-base min-w-[200px]" 
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? 'Đang gửi...' : 'Gửi lời chúc'}
-                            </button>
-                        </div>
-                    </form>
-                </FadeIn>
-            ) : (
-                <div className="text-center p-8 text-[var(--color-primary)] font-bold">
-                    Cảm ơn bạn đã gửi lời chúc!
-                </div>
-            )}
-        </div>
+        <FadeIn direction="up" delay={0.05}>
+          <p className="wc-subtitle mx-auto mt-4 max-w-[38ch]">
+            Đôi lời chúc phúc từ bạn là món quà quý giá cho ngày trọng đại của chúng tôi.
+          </p>
+        </FadeIn>
+
+        {done ? (
+          <FadeIn direction="up" className="mt-8">
+            <div className="mx-auto px-4 py-6" role="status" aria-live="polite">
+              <p
+                className="font-[family-name:var(--wc-font-display)] text-[clamp(28px,7vw,38px)] leading-tight"
+                style={{ color: 'var(--wc-primary)' }}
+              >
+                Cảm ơn {sentName || 'bạn'} đã gửi lời chúc!
+              </p>
+              <p className="wc-subtitle mt-3">
+                Lời chúc của bạn đã được ghi nhận.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setDone(false);
+                  setError('');
+                }}
+                className="wc-btn wc-btn-outline mt-6"
+              >
+                Gửi lời chúc khác
+              </button>
+            </div>
+          </FadeIn>
+        ) : (
+          <FadeIn direction="up" delay={0.1} className="mt-8">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-6 text-left"
+              noValidate
+            >
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="gb-name"
+                  className="text-sm font-semibold"
+                  style={{ color: 'var(--wc-ink)' }}
+                >
+                  Tên của bạn
+                </label>
+                <input
+                  id="gb-name"
+                  type="text"
+                  name="fullname"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Nhập tên của bạn"
+                  autoComplete="name"
+                  className="wc-field"
+                  aria-invalid={!!error && !name.trim()}
+                  aria-describedby={error ? 'gb-error' : undefined}
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="gb-message"
+                  className="text-sm font-semibold"
+                  style={{ color: 'var(--wc-ink)' }}
+                >
+                  Lời chúc của bạn
+                </label>
+                <textarea
+                  id="gb-message"
+                  name="comment"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Viết lời chúc mừng..."
+                  rows={4}
+                  className="wc-field resize-y leading-relaxed"
+                  aria-invalid={!!error && !message.trim()}
+                  aria-describedby={error ? 'gb-error' : undefined}
+                />
+              </div>
+
+              {error && (
+                <p
+                  id="gb-error"
+                  role="alert"
+                  className="rounded-[var(--wc-radius-sm)] px-4 py-2.5 text-left text-sm"
+                  style={{
+                    color: 'var(--wc-primary-700)',
+                    background: 'var(--wc-primary-soft)',
+                  }}
+                >
+                  {error}
+                </p>
+              )}
+
+              {!configured && (
+                <p className="text-left text-sm" style={{ color: 'var(--wc-muted)' }}>
+                  Tính năng lời chúc sẽ sớm mở.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting || !configured}
+                aria-disabled={isSubmitting || !configured}
+                className="wc-btn w-full disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isSubmitting ? 'Đang gửi...' : 'Gửi lời chúc'}
+              </button>
+            </form>
+          </FadeIn>
+        )}
+      </div>
     </div>
   );
 }
