@@ -3,6 +3,7 @@
 import { useState, useEffect, ReactNode } from 'react';
 import OpeningCard from './OpeningCard';
 import MusicPlayer from './MusicPlayer';
+import WishesToast from './WishesToast';
 import { useAutoScroll } from '@/hooks/useAutoScroll';
 
 interface PageShellProps {
@@ -34,6 +35,7 @@ export default function PageShell({ children }: PageShellProps) {
       {children}
 
       <MusicPlayer showButton={isOpened} />
+      <WishesToast showToast={isOpened} />
 
       <div className="miu-branding" style={{ order: 100 }}>
         <div className="miu-branding__title">Cảm ơn bạn đã dành thời gian xem thiệp cưới của chúng tôi ❤️</div>
