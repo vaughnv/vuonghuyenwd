@@ -5,6 +5,6 @@ const isStatic = process.env.STATIC_EXPORT === '1';
 
 const nextConfig = isStatic
   ? { output: 'export', images: { unoptimized: true } }
-  : {};
+  : { images: { unoptimized: true } };
 
 export default nextConfig;
