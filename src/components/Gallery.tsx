@@ -14,6 +14,7 @@ export default function Gallery() {
 
   const isOpen = activeIndex !== null;
   const hasPhotos = visiblePhotos.length > 0;
+  const PREVIEW = 6;
 
   const close = useCallback(() => setActiveIndex(null), []);
   const showPrev = useCallback(
@@ -75,33 +76,55 @@ export default function Gallery() {
       </div>
 
       {hasPhotos ? (
-        <FadeIn direction="up" delay={0.1}>
-          <div className={s.marqueeWrap}>
-            <div className={s.marqueeTrack}>
-              {[...visiblePhotos, ...visiblePhotos].map((photo, i) => {
-                const originalIndex = i % visiblePhotos.length;
-                return (
+        <>
+          <FadeIn direction="up" delay={0.1}>
+            <div
+              style={{
+                width: 'calc(100% + 2 * clamp(20px, 6vw, 34px))',
+                marginInline: 'calc(-1 * clamp(20px, 6vw, 34px))',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: 10,
+                minWidth: 0,
+              }}
+            >
+              {visiblePhotos.slice(0, PREVIEW).map((photo, i) => (
                   <button
                     key={`${photo.src}-${i}`}
                     type="button"
-                    className={s.photoBtn}
-                    onClick={() => setActiveIndex(originalIndex)}
+                    onClick={() => setActiveIndex(i)}
                     aria-label={`Mở ảnh: ${photo.alt}`}
+                    style={{
+                      aspectRatio: '2 / 3',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      borderRadius: 10,
+                      border: '1px solid var(--wc-line-soft)',
+                      padding: 0,
+                      cursor: 'pointer',
+                      background: 'var(--wc-surface, #fff)',
+                    }}
                   >
                     <Image
                       src={photo.src}
                       alt={photo.alt}
                       fill
-                      sizes="(max-width: 575px) 45vw, 170px"
-                      className={s.photoImg}
+                      sizes="(max-width: 575px) 60vw, 300px"
+                      style={{ objectFit: 'cover' }}
                       onError={() => removeBrokenPhoto(photo.src)}
                     />
                   </button>
-                );
-              })}
+              ))}
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
+          {visiblePhotos.length > PREVIEW && (
+            <FadeIn direction="up" delay={0.18} className="mt-6 flex justify-center">
+              <button type="button" className="wc-btn wc-btn-outline" onClick={() => setActiveIndex(0)}>
+                Xem thêm ({visiblePhotos.length} ảnh)
+              </button>
+            </FadeIn>
+          )}
+        </>
       ) : (
         <FadeIn direction="up" delay={0.1}>
           <div className={s.collage} role="img" aria-label="Album ảnh đang được cặp đôi chuẩn bị">
@@ -171,30 +194,22 @@ function Lightbox({ photos, index, closeRef, onClose, onPrev, onNext }: Lightbox
   const photo = photos[index];
   const multiple = photos.length > 1;
   const [zoomed, setZoomed] = useState(false);
-  const startX = useRef<number | null>(null);
-  const startY = useRef<number | null>(null);
+  const movedRef = useRef(false);
 
   // Reset zoom whenever the photo changes.
   useEffect(() => {
     setZoomed(false);
   }, [index]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const t = e.touches[0];
-    startX.current = t.clientX;
-    startY.current = t.clientY;
-  };
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (zoomed || startX.current === null) return;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - startX.current;
-    const dy = t.clientY - (startY.current ?? 0);
-    startX.current = null;
-    if (multiple && Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx > 0) onPrev();
-      else onNext();
-    }
-  };
+  // Preload nearby photos so navigation feels instant (kills the lag).
+  useEffect(() => {
+    const n = photos.length;
+    [1, -1, 2, -2].forEach((d) => {
+      const i = ((index + d) % n + n) % n;
+      const im = new window.Image();
+      im.src = photos[i].src;
+    });
+  }, [index, photos]);
 
   return (
     <motion.div
@@ -237,28 +252,49 @@ function Lightbox({ photos, index, closeRef, onClose, onPrev, onNext }: Lightbox
           </>
         )}
 
-        <figure className={s.lightboxFigure} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <figure className={s.lightboxFigure}>
           <div className={`${s.lightboxImg} ${zoomed ? s.zoomed : ''}`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              className={s.lightboxImgEl}
-              draggable={false}
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomed((z) => !z);
-              }}
-            />
+            <AnimatePresence initial={false} mode="popLayout">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <motion.img
+                key={photo.src}
+                src={photo.src}
+                alt={photo.alt}
+                className={s.lightboxImgEl}
+                draggable={false}
+                drag={!zoomed && multiple ? 'x' : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragStart={() => {
+                  movedRef.current = true;
+                }}
+                onDragEnd={(_e, info) => {
+                  if (!zoomed) {
+                    if (info.offset.x < -60 || info.velocity.x < -450) onNext();
+                    else if (info.offset.x > 60 || info.velocity.x > 450) onPrev();
+                  }
+                  window.setTimeout(() => {
+                    movedRef.current = false;
+                  }, 60);
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (movedRef.current) {
+                    movedRef.current = false;
+                    return;
+                  }
+                  setZoomed((z) => !z);
+                }}
+              />
+            </AnimatePresence>
           </div>
           <figcaption className={s.lightboxCaption}>
             {photo.alt}
-            {multiple && (
-              <span className={s.counter}>
-                {' '}
-                · {index + 1}/{photos.length}
-              </span>
-            )}
+            {multiple && <span className={s.counter}> · {index + 1}/{photos.length}</span>}
           </figcaption>
           <p className={s.zoomHint}>
             {zoomed ? 'Chạm để thu nhỏ' : 'Chạm ảnh để phóng to · vuốt để chuyển'}

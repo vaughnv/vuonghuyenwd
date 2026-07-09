@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 import Hero from '@/components/Hero';
+import Introduction from '@/components/Introduction';
 import Letter from '@/components/Letter';
 import WeddingInfo from '@/components/WeddingInfo';
 import Directions from '@/components/Directions';
@@ -64,6 +65,7 @@ export default function Home() {
   return (
     <PageShell>
       <Hero />
+      <Introduction />
       <WeddingInfo />
       <CalendarSection />
       <Timeline />
