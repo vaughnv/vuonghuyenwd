@@ -36,10 +36,6 @@ export default function PageShell({ children }: PageShellProps) {
 
       <MusicPlayer showButton={isOpened} />
       <WishesToast showToast={isOpened} />
-
-      <div className="miu-branding" style={{ order: 100 }}>
-        <div className="miu-branding__title">Cảm ơn bạn đã dành thời gian xem thiệp cưới của chúng tôi ❤️</div>
-      </div>
     </main>
   );
 }

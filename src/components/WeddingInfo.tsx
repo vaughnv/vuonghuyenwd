@@ -15,7 +15,7 @@ export default function WeddingInfo() {
                         <div className="name mechure">Bà: Trần Thị Thương</div>
                         <div className="name chure">Chú rể: Hùng Vương</div>
                     </div>
-                    <div className="location">Số 601 đường 512B, Thôn Thái Tượng, Xã Tượng Lĩnh, Tỉnh Thanh Hoá</div>
+                    <div className="location">Thôn Thái Tượng, Xã Tượng Lĩnh, Tỉnh Thanh Hoá</div>
                 </FadeIn>
                 <FadeIn direction="right" className="parent">
                     <div className="label">Nhà gái</div>
@@ -24,7 +24,7 @@ export default function WeddingInfo() {
                         <div className="name mecodau">Bà: Nguyễn Thị Nga</div>
                         <div className="name codau">Cô dâu: Thu Huyền</div>
                     </div>
-                    <div className="location">Số 463 đường 512B, Thôn Cát Vinh, Xã Tượng Lĩnh, Tỉnh Thanh Hoá</div>
+                    <div className="location">Thôn Cát Vinh, Xã Tượng Lĩnh, Tỉnh Thanh Hoá</div>
                 </FadeIn>
             </div>
 

@@ -342,7 +342,7 @@ body img {
 #card-info .inner {
   position: relative;
   z-index: 1;
-  padding: 50px 16px;
+  padding: 50px 12px;
 }
 
 #card-info .parents {

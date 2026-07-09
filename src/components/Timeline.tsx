@@ -3,7 +3,7 @@
 import type { WeddingEvent } from '@/data/wedding';
 import FadeIn from './anim/FadeIn';
 import { events } from '@/data/wedding';
-import { openInCalendar, googleCalendarURL } from '@/utils/calendar';
+import { openInCalendar } from '@/utils/calendar';
 
 
 function EventContent({ ev, side }: { ev: WeddingEvent; side: 'left' | 'right' }) {
@@ -22,35 +22,22 @@ function EventContent({ ev, side }: { ev: WeddingEvent; side: 'left' | 'right' }
           color: 'var(--wc-muted)',
         }}
       >
-        {ev.weekday} · {ev.dateLabel}
+        {ev.weekday} · <span style={{ color: 'var(--wc-ink)', fontWeight: 700 }}>{ev.time}</span> · {ev.dateLabel}
       </span>
 
-      <div className="flex items-baseline gap-2" style={{ flexDirection: side === 'left' ? 'row-reverse' : 'row' }}>
-        <h3
-          style={{
-            fontFamily: 'var(--wc-font-display)',
-            fontSize: 'clamp(19px, 5vw, 24px)',
-            fontWeight: 600,
-            color: 'var(--wc-primary)',
-            lineHeight: 1.1,
-            margin: 0,
-            minWidth: 0,
-          }}
-        >
-          {ev.name}
-        </h3>
-        <span
-          style={{
-            fontFamily: 'var(--wc-font-serif)',
-            fontSize: 15,
-            fontWeight: 700,
-            color: 'var(--wc-ink)',
-            fontVariantNumeric: 'tabular-nums',
-          }}
-        >
-          {ev.time}
-        </span>
-      </div>
+      <h3
+        style={{
+          fontFamily: 'var(--wc-font-display)',
+          fontSize: 'clamp(19px, 5vw, 24px)',
+          fontWeight: 600,
+          color: 'var(--wc-primary)',
+          lineHeight: 1.15,
+          margin: 0,
+          minWidth: 0,
+        }}
+      >
+        {ev.name}
+      </h3>
 
       <p
         style={{
@@ -97,8 +84,8 @@ function EventContent({ ev, side }: { ev: WeddingEvent; side: 'left' | 'right' }
       ) : null}
 
       <div
-        className="mt-1.5 flex flex-col gap-1"
-        style={{ alignItems: side === 'left' ? 'flex-end' : 'flex-start' }}
+        className="mt-1.5 flex"
+        style={{ justifyContent: side === 'left' ? 'flex-end' : 'flex-start' }}
       >
         <button
           type="button"
@@ -107,20 +94,23 @@ function EventContent({ ev, side }: { ev: WeddingEvent; side: 'left' | 'right' }
         >
           Thêm vào lịch
         </button>
-        <a
-          href={googleCalendarURL(ev)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="wc-link"
-        >
-          Google Calendar
-        </a>
       </div>
     </div>
   );
 }
 
 export default function Timeline() {
+  const spineBends = 4;
+  const spineH = 1000;
+  const cx = 7;
+  const amp = 9;
+  const seg = spineH / spineBends;
+  let wavePath = `M ${cx} 0`;
+  for (let i = 0; i < spineBends; i++) {
+    const y1 = (i + 1) * seg;
+    const cxp = cx + (i % 2 === 0 ? amp : -amp);
+    wavePath += ` C ${cxp} ${i * seg + seg * 0.5}, ${cxp} ${y1 - seg * 0.5}, ${cx} ${y1}`;
+  }
   return (
     <div id="card-timelines" style={{ order: 5 }}>
       <div className="wc-section" style={{ minWidth: 0 }}>
@@ -146,18 +136,29 @@ export default function Timeline() {
           style={{ marginTop: 36, maxWidth: 480, minWidth: 0 }}
         >
           {/* Center vertical line */}
-          <div
+          <svg
             aria-hidden="true"
+            viewBox={`0 0 14 ${spineH}`}
+            preserveAspectRatio="none"
             style={{
               position: 'absolute',
               left: '50%',
               transform: 'translateX(-50%)',
               top: 8,
-              bottom: 8,
-              width: 2,
-              background: 'var(--wc-line)',
+              height: 'calc(100% - 16px)',
+              width: 40,
+              zIndex: 0,
             }}
-          />
+          >
+            <path
+              d={wavePath}
+              fill="none"
+              stroke="var(--wc-line)"
+              strokeWidth={2}
+              vectorEffect="non-scaling-stroke"
+              strokeLinecap="round"
+            />
+          </svg>
 
           <div className="flex flex-col" style={{ gap: 28 }}>
             {events.map((ev, i) => {
