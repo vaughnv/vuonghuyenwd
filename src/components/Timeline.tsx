@@ -3,7 +3,7 @@
 import type { WeddingEvent } from '@/data/wedding';
 import FadeIn from './anim/FadeIn';
 import { events } from '@/data/wedding';
-import { openInCalendar } from '@/utils/calendar';
+import AddToCalendar from './AddToCalendar';
 
 
 function EventContent({ ev, side }: { ev: WeddingEvent; side: 'left' | 'right' }) {
@@ -87,13 +87,7 @@ function EventContent({ ev, side }: { ev: WeddingEvent; side: 'left' | 'right' }
         className="mt-1.5 flex"
         style={{ justifyContent: side === 'left' ? 'flex-end' : 'flex-start' }}
       >
-        <button
-          type="button"
-          className="wc-btn wc-btn-outline wc-btn-sm"
-          onClick={() => openInCalendar(ev)}
-        >
-          Thêm vào lịch
-        </button>
+        <AddToCalendar ev={ev} side={side} />
       </div>
     </div>
   );

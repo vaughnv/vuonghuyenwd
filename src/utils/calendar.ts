@@ -83,6 +83,26 @@ export function googleCalendarURL(e: WeddingEvent): string {
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
+/** Outlook.com deep link to add the event. */
+export function outlookCalendarURL(e: WeddingEvent): string {
+  const { start, end } = eventDates(e);
+  const params = new URLSearchParams({
+    path: '/calendar/action/compose',
+    rru: 'addevent',
+    subject: `${e.name} — ${COUPLE}`,
+    startdt: start.toISOString(),
+    enddt: end.toISOString(),
+    body: description(e),
+    location: `${e.venue}, ${e.address}`,
+  });
+  return `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`;
+}
+
+/** Hosted .ics path — iOS/Apple Calendar opens this directly. */
+export function appleCalendarPath(e: WeddingEvent): string {
+  return `/calendar/${e.id}`;
+}
+
 /**
  * Open the event straight in the device calendar (no file download).
  * On iOS/Safari, navigating to a `text/calendar` data URL opens the Calendar
