@@ -73,7 +73,7 @@ export default function Introduction() {
 
         <FadeIn direction="right" delay={0.2} className="gb-box bride relative overflow-hidden">
           <Image
-            src="/images/album/PMN07283.webp"
+            src="/images/album/bride-card-v2.webp"
             alt="Cô dâu Thu Huyền"
             fill
             className="object-cover"
