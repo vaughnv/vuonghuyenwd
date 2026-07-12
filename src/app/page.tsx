@@ -44,6 +44,9 @@ function cleanGuest(searchParams: SearchParams): string {
   return decodeGuestValue(value)
     .replace(/[\u0000-\u001f<>]/g, '')
     .replace(/\s{3,}/g, ' + ')
+    .replace(/-\s+/g, ' + ')
+    .replace(/-/g, ' ')
+    .replace(/\s*\+\s*/g, ' + ')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 40);
