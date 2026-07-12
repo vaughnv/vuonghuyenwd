@@ -59,9 +59,7 @@ export const albumPhotos: AlbumPhoto[] = [
   { src: "/images/album/PMN09140.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 42" },
   { src: "/images/album/PMN09224.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 43" },
   { src: "/images/album/PMN09241.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 44" },
-  { src: "/images/album/PMN09465.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 45" },
-  { src: "/images/album/PMN09467.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 46" },
-  { src: "/images/album/PMN09585.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 47" },
-  { src: "/images/album/PMN09692.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 48" },
-  { src: "/images/album/PMN09723.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 49" },
+  { src: "/images/album/PMN09585.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 45" },
+  { src: "/images/album/PMN09692.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 46" },
+  { src: "/images/album/PMN09723.webp", alt: "Ảnh cưới Hùng Vương & Thu Huyền 47" },
 ];
