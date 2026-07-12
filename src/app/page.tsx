@@ -17,7 +17,7 @@ const COUPLE = 'Hùng Vương & Thu Huyền';
 const BASE_TITLE = `${COUPLE} — Thiệp cưới 09.08.2026`;
 const BASE_DESC =
   'Trân trọng kính mời bạn đến chung vui trong ngày trọng đại của Hùng Vương & Thu Huyền. Lễ Thành Hôn ngày 09.08.2026 — sự hiện diện và lời chúc phúc của bạn là niềm vinh hạnh cho gia đình chúng tôi.';
-const SHARE_IMAGE = 'https://www.vuongxhuyen.love/images/footer.webp';
+const SHARE_IMAGE = 'https://www.vuongxhuyen.love/images/album/PMN08846.webp';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -73,7 +73,7 @@ export async function generateMetadata({
       description,
       type: 'website',
       locale: 'vi_VN',
-      images: [{ url: SHARE_IMAGE, width: 1000, height: 667, alt: title }],
+      images: [{ url: SHARE_IMAGE, width: 1800, height: 1200, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
