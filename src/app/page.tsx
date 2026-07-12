@@ -17,12 +17,28 @@ const COUPLE = 'Hùng Vương & Thu Huyền';
 const BASE_TITLE = `${COUPLE} — Thiệp cưới 09.08.2026`;
 const BASE_DESC =
   'Trân trọng kính mời bạn đến chung vui trong ngày trọng đại của Hùng Vương & Thu Huyền. Lễ Thành Hôn ngày 09.08.2026 — sự hiện diện và lời chúc phúc của bạn là niềm vinh hạnh cho gia đình chúng tôi.';
+const SHARE_IMAGE = 'https://www.vuongxhuyen.love/images/footer.webp';
+
+
+function decodeGuestValue(value: string): string {
+  let decoded = value.replace(/\+/g, ' ');
+  for (let i = 0; i < 2; i += 1) {
+    try {
+      const next = decodeURIComponent(decoded);
+      if (next === decoded) break;
+      decoded = next;
+    } catch {
+      break;
+    }
+  }
+  return decoded;
+}
 
 function cleanGuest(searchParams: SearchParams): string {
   const raw = searchParams.guest ?? searchParams.to;
   const value = Array.isArray(raw) ? raw[0] : raw;
   if (!value) return '';
-  return value
+  return decodeGuestValue(value)
     .replace(/[\u0000-\u001f<>]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
@@ -50,13 +66,13 @@ export async function generateMetadata({
       description,
       type: 'website',
       locale: 'vi_VN',
-      images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: title }],
+      images: [{ url: SHARE_IMAGE, width: 1000, height: 667, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/og-image.jpg'],
+      images: [SHARE_IMAGE],
     },
   };
 }

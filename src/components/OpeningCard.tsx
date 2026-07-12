@@ -44,10 +44,24 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
     '--opening-invite-size': 'clamp(14px, 3.8vw, 18px)',
   } as CSSProperties;
 
+function decodeGuestValue(value: string): string {
+  let decoded = value.replace(/\+/g, ' ');
+  for (let i = 0; i < 2; i += 1) {
+    try {
+      const next = decodeURIComponent(decoded);
+      if (next === decoded) break;
+      decoded = next;
+    } catch {
+      break;
+    }
+  }
+  return decoded;
+}
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const raw = params.get('guest') ?? params.get('to') ?? '';
-    const clean = raw.replace(/[\u0000-\u001f<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 40);
+    const clean = decodeGuestValue(raw).replace(/[\u0000-\u001f<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 40);
     if (clean) setGuest(clean);
   }, []);
 
