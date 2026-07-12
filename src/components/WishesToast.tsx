@@ -111,19 +111,13 @@ export default function WishesToast({ showToast }: { showToast: boolean }) {
                   color: 'var(--wc-primary, #4a6037)',
                   fontSize: 15,
                   lineHeight: 1.2,
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
                 }}
               >
                 {current.name}
               </span>
               <span
                 style={{
-                  display: '-webkit-box',
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden',
+                  display: 'block',
                   marginTop: 2,
                   fontFamily: 'var(--wc-font-serif, serif)',
                   color: 'var(--wc-ink-soft, #55603f)',

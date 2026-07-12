@@ -56,7 +56,7 @@ export default function Introduction() {
       <div className="groom-bride-box nha-trai">
         <FadeIn direction="left" delay={0} className="gb-box groom relative overflow-hidden">
           <Image
-            src="/images/avatar/groom.webp"
+            src="/images/album/cr.webp"
             alt="Chú rể Hùng Vương"
             fill
             className="object-cover"
@@ -73,7 +73,7 @@ export default function Introduction() {
 
         <FadeIn direction="right" delay={0.2} className="gb-box bride relative overflow-hidden">
           <Image
-            src="/images/avatar/bride.webp"
+            src="/images/album/PMN07283.webp"
             alt="Cô dâu Thu Huyền"
             fill
             className="object-cover"
