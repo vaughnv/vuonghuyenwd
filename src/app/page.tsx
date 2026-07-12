@@ -21,7 +21,7 @@ const SHARE_IMAGE = 'https://www.vuongxhuyen.love/images/footer.webp';
 
 
 function decodeGuestValue(value: string): string {
-  let decoded = value.replace(/\+/g, ' ');
+  let decoded = value;
   for (let i = 0; i < 2; i += 1) {
     try {
       const next = decodeURIComponent(decoded);

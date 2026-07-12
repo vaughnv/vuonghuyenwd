@@ -45,7 +45,7 @@ export default function OpeningCard({ onOpenComplete, onInteract }: OpeningCardP
   } as CSSProperties;
 
 function decodeGuestValue(value: string): string {
-  let decoded = value.replace(/\+/g, ' ');
+  let decoded = value;
   for (let i = 0; i < 2; i += 1) {
     try {
       const next = decodeURIComponent(decoded);
