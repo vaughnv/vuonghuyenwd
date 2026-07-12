@@ -61,8 +61,10 @@ export default function Hero() {
                 color: '#ffffff',
                 fontWeight: 600,
                 lineHeight: 1.05,
-                fontSize: 'clamp(38px, 11vw, 60px)',
+                fontSize: 'clamp(32px, 8.8vw, 52px)',
                 margin: 0,
+                maxWidth: '100%',
+                whiteSpace: 'nowrap',
                 textShadow: '0 2px 18px rgba(0,0,0,0.45)',
               }}
             >
