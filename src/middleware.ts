@@ -5,6 +5,8 @@ const GUEST_KEY: Record<string, true> = {
   to: true,
 };
 
+const SHARE_VERSION = '20260716-1';
+
 export function middleware(request: NextRequest) {
   const queryStart = request.url.indexOf('?');
   if (queryStart === -1) {
@@ -21,6 +23,12 @@ export function middleware(request: NextRequest) {
 
   if (!isGuestRequest) {
     return NextResponse.next();
+  }
+
+  if (request.nextUrl.searchParams.get('v') !== SHARE_VERSION) {
+    const versionedUrl = request.nextUrl.clone();
+    versionedUrl.searchParams.set('v', SHARE_VERSION);
+    return NextResponse.redirect(versionedUrl, 307);
   }
 
   const response = NextResponse.next();
