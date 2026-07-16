@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const SHARE_VERSION = '20260716-4';
-const INVITE_PREFIX = `/invite/${SHARE_VERSION}/`;
 
 function disableGuestCache(response: NextResponse): NextResponse {
   response.headers.set('Cache-Control', 'private, no-store, no-cache, max-age=0, must-revalidate');
@@ -11,31 +10,21 @@ function disableGuestCache(response: NextResponse): NextResponse {
 }
 
 export function middleware(request: NextRequest) {
-  const invitePathMatch = request.nextUrl.pathname.match(/^\/invite\/([^/]+)\/([^/]+)\/?$/);
-  if (invitePathMatch && invitePathMatch[1] !== SHARE_VERSION) {
-    const versionedUrl = request.nextUrl.clone();
-    versionedUrl.pathname = `${INVITE_PREFIX}${invitePathMatch[2]}`;
-    return NextResponse.redirect(versionedUrl, 307);
-  }
-
-  if (request.nextUrl.pathname.startsWith(INVITE_PREFIX)) {
-    const rawGuest = request.nextUrl.pathname.slice(INVITE_PREFIX.length);
-    if (!rawGuest || rawGuest.includes('/')) {
-      return NextResponse.next();
-    }
-
+  const legacyInviteMatch = request.nextUrl.pathname.match(/^\/invite\/[^/]+\/([^/]+)\/?$/);
+  if (legacyInviteMatch) {
     let guest: string;
     try {
-      guest = decodeURIComponent(rawGuest);
+      guest = decodeURIComponent(legacyInviteMatch[1]);
     } catch {
       return NextResponse.next();
     }
-    const rewriteUrl = request.nextUrl.clone();
-    rewriteUrl.pathname = '/';
-    rewriteUrl.searchParams.set('guest', guest);
-    rewriteUrl.searchParams.set('sharePath', `${INVITE_PREFIX}${encodeURIComponent(guest)}`);
-    rewriteUrl.searchParams.delete('v');
-    return disableGuestCache(NextResponse.rewrite(rewriteUrl));
+
+    const queryUrl = request.nextUrl.clone();
+    queryUrl.pathname = '/';
+    queryUrl.search = '';
+    queryUrl.searchParams.set('guest', guest);
+    queryUrl.searchParams.set('v', SHARE_VERSION);
+    return NextResponse.redirect(queryUrl, 307);
   }
 
   const guestKey = request.nextUrl.searchParams.has('guest')
@@ -44,17 +33,15 @@ export function middleware(request: NextRequest) {
       ? 'to'
       : null;
 
-  if (!guestKey) {
+  if (!guestKey || !request.nextUrl.searchParams.get(guestKey)) {
     return NextResponse.next();
   }
 
-  const guest = request.nextUrl.searchParams.get(guestKey);
-  if (!guest) {
-    return NextResponse.next();
+  if (request.nextUrl.searchParams.get('v') !== SHARE_VERSION) {
+    const versionedUrl = request.nextUrl.clone();
+    versionedUrl.searchParams.set('v', SHARE_VERSION);
+    return NextResponse.redirect(versionedUrl, 307);
   }
 
-  const versionedUrl = request.nextUrl.clone();
-  versionedUrl.pathname = `${INVITE_PREFIX}${encodeURIComponent(guest)}`;
-  versionedUrl.searchParams.delete('v');
-  return NextResponse.redirect(versionedUrl, 307);
+  return disableGuestCache(NextResponse.next());
 }

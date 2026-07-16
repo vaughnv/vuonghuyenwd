@@ -54,19 +54,13 @@ function cleanGuest(searchParams: SearchParams): string {
     .slice(0, 40);
 }
 
-// Per-guest share preview: versioned invite paths isolate Facebook's preview cache.
+// Per-guest query URLs keep personalized Open Graph metadata on an isolated cache key.
 export async function generateMetadata({
   searchParams,
 }: {
   searchParams: SearchParams;
 }): Promise<Metadata> {
   const guest = process.env.STATIC_EXPORT === '1' ? '' : cleanGuest(searchParams);
-  const rawSharePath = searchParams.sharePath;
-  const sharePath = Array.isArray(rawSharePath) ? rawSharePath[0] : rawSharePath;
-  const pageUrl =
-    sharePath?.startsWith(`/invite/${SHARE_VERSION}/`)
-      ? new URL(sharePath, SITE_URL)
-      : new URL('/', SITE_URL);
 
   const title = guest ? `Kính mời ${guest} — Thiệp cưới ${COUPLE}` : BASE_TITLE;
   const description = guest
@@ -76,11 +70,10 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: pageUrl },
+    alternates: guest ? {} : { canonical: SITE_URL },
     openGraph: {
       title,
       description,
-      url: pageUrl,
       type: 'website',
       locale: 'vi_VN',
       images: [{ url: SHARE_IMAGE, type: 'image/png', width: 1200, height: 800, alt: title }],
