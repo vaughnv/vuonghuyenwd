@@ -1,39 +1,53 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const GUEST_KEY: Record<string, true> = {
-  guest: true,
-  to: true,
-};
+const SHARE_VERSION = '20260716-2';
+const INVITE_PREFIX = `/invite/${SHARE_VERSION}/`;
 
-const SHARE_VERSION = '20260716-1';
-
-export function middleware(request: NextRequest) {
-  const queryStart = request.url.indexOf('?');
-  if (queryStart === -1) {
-    return NextResponse.next();
-  }
-
-  const hashStart = request.url.indexOf('#', queryStart);
-  const query = request.url.slice(queryStart + 1, hashStart === -1 ? undefined : hashStart);
-  const isGuestRequest = query.split('&').some((part) => {
-    const separatorIndex = part.indexOf('=');
-    const rawKey = separatorIndex === -1 ? part : part.slice(0, separatorIndex);
-    return Boolean(GUEST_KEY[rawKey]);
-  });
-
-  if (!isGuestRequest) {
-    return NextResponse.next();
-  }
-
-  if (request.nextUrl.searchParams.get('v') !== SHARE_VERSION) {
-    const versionedUrl = request.nextUrl.clone();
-    versionedUrl.searchParams.set('v', SHARE_VERSION);
-    return NextResponse.redirect(versionedUrl, 307);
-  }
-
-  const response = NextResponse.next();
+function disableGuestCache(response: NextResponse): NextResponse {
   response.headers.set('Cache-Control', 'private, no-store, no-cache, max-age=0, must-revalidate');
   response.headers.set('Pragma', 'no-cache');
   response.headers.set('Expires', '0');
   return response;
+}
+
+export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith(INVITE_PREFIX)) {
+    const rawGuest = request.nextUrl.pathname.slice(INVITE_PREFIX.length);
+    if (!rawGuest || rawGuest.includes('/')) {
+      return NextResponse.next();
+    }
+
+    let guest: string;
+    try {
+      guest = decodeURIComponent(rawGuest);
+    } catch {
+      return NextResponse.next();
+    }
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = '/';
+    rewriteUrl.searchParams.set('guest', guest);
+    rewriteUrl.searchParams.set('sharePath', `${INVITE_PREFIX}${encodeURIComponent(guest)}`);
+    rewriteUrl.searchParams.delete('v');
+    return disableGuestCache(NextResponse.rewrite(rewriteUrl));
+  }
+
+  const guestKey = request.nextUrl.searchParams.has('guest')
+    ? 'guest'
+    : request.nextUrl.searchParams.has('to')
+      ? 'to'
+      : null;
+
+  if (!guestKey) {
+    return NextResponse.next();
+  }
+
+  const guest = request.nextUrl.searchParams.get(guestKey);
+  if (!guest) {
+    return NextResponse.next();
+  }
+
+  const versionedUrl = request.nextUrl.clone();
+  versionedUrl.pathname = `${INVITE_PREFIX}${encodeURIComponent(guest)}`;
+  versionedUrl.searchParams.delete('v');
+  return NextResponse.redirect(versionedUrl, 307);
 }

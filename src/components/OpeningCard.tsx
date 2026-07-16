@@ -60,7 +60,8 @@ function decodeGuestValue(value: string): string {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const raw = params.get('guest') ?? params.get('to') ?? '';
+    const invitePathMatch = window.location.pathname.match(/^\/invite\/[^/]+\/([^/]+)\/?$/);
+    const raw = params.get('guest') ?? params.get('to') ?? invitePathMatch?.[1] ?? '';
     const clean = decodeGuestValue(raw).replace(/[\u0000-\u001f<>]/g, '').replace(/\s{3,}/g, ' + ').replace(/-\s+/g, ' + ').replace(/-/g, ' ').replace(/\s*\+\s*/g, ' + ').replace(/\s+/g, ' ').trim().slice(0, 40);
     if (clean) setGuest(clean);
   }, []);

@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vuongxhuyen.lov
 const title = "Hùng Vương & Thu Huyền — Thiệp cưới 09.08.2026";
 const description =
   "Trân trọng kính mời bạn đến chung vui trong ngày trọng đại của Hùng Vương & Thu Huyền. Lễ Thành Hôn được tổ chức ngày 09.08.2026 — sự hiện diện và lời chúc phúc của bạn là niềm vinh hạnh cho gia đình chúng tôi.";
-const shareImage = "https://www.vuongxhuyen.love/images/album/PMN08846.webp?v=20260716-1";
+const shareImage = "https://www.vuongxhuyen.love/images/album/PMN08846-facebook.jpg";
 
 
 export const metadata: Metadata = {
@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: shareImage,
+        type: "image/jpeg",
         width: 1800,
         height: 1200,
         alt: "Hùng Vương & Thu Huyền — Thiệp cưới 09.08.2026",
