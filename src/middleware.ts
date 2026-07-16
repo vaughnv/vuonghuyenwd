@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const SHARE_VERSION = '20260716-2';
+const SHARE_VERSION = '20260716-3';
 const INVITE_PREFIX = `/invite/${SHARE_VERSION}/`;
 
 function disableGuestCache(response: NextResponse): NextResponse {
@@ -11,6 +11,13 @@ function disableGuestCache(response: NextResponse): NextResponse {
 }
 
 export function middleware(request: NextRequest) {
+  const invitePathMatch = request.nextUrl.pathname.match(/^\/invite\/([^/]+)\/([^/]+)\/?$/);
+  if (invitePathMatch && invitePathMatch[1] !== SHARE_VERSION) {
+    const versionedUrl = request.nextUrl.clone();
+    versionedUrl.pathname = `${INVITE_PREFIX}${invitePathMatch[2]}`;
+    return NextResponse.redirect(versionedUrl, 307);
+  }
+
   if (request.nextUrl.pathname.startsWith(INVITE_PREFIX)) {
     const rawGuest = request.nextUrl.pathname.slice(INVITE_PREFIX.length);
     if (!rawGuest || rawGuest.includes('/')) {
