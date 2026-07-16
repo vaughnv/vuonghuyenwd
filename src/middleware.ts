@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const SHARE_VERSION = '20260716-3';
+const SHARE_VERSION = '20260716-4';
 const INVITE_PREFIX = `/invite/${SHARE_VERSION}/`;
 
 function disableGuestCache(response: NextResponse): NextResponse {

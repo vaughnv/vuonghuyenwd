@@ -18,8 +18,8 @@ const BASE_TITLE = `${COUPLE} — Thiệp cưới 09.08.2026`;
 const BASE_DESC =
   'Trân trọng kính mời bạn đến chung vui trong ngày trọng đại của Hùng Vương & Thu Huyền. Lễ Thành Hôn ngày 09.08.2026 — sự hiện diện và lời chúc phúc của bạn là niềm vinh hạnh cho gia đình chúng tôi.';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vuongxhuyen.love';
-const SHARE_VERSION = '20260716-3';
-const SHARE_IMAGE = `${SITE_URL}/images/album/PMN08846-facebook-v3.jpg`;
+const SHARE_VERSION = '20260716-4';
+const SHARE_IMAGE = `${SITE_URL}/images/album/PMN08846-facebook-v4.png`;
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -83,7 +83,7 @@ export async function generateMetadata({
       url: pageUrl,
       type: 'website',
       locale: 'vi_VN',
-      images: [{ url: SHARE_IMAGE, type: 'image/jpeg', width: 1800, height: 1200, alt: title }],
+      images: [{ url: SHARE_IMAGE, type: 'image/png', width: 1200, height: 800, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
