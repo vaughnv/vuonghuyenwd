@@ -1,10 +1,16 @@
 'use client';
 
 import FadeIn from './anim/FadeIn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getDb, isFirebaseConfigured } from '@/utils/firebase';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import type { FormEvent } from 'react';
+
+interface Wish {
+  id: string;
+  name: string;
+  message: string;
+}
 
 export default function GuestBook() {
   const [name, setName] = useState('');
@@ -13,8 +19,34 @@ export default function GuestBook() {
   const [error, setError] = useState('');
   const [sentName, setSentName] = useState('');
   const [done, setDone] = useState(false);
+  const [wishes, setWishes] = useState<Wish[]>([]);
+  const [showAll, setShowAll] = useState(false);
 
   const configured = isFirebaseConfigured;
+
+  // Live feed of all wishes, so guests can read them without waiting for the toast.
+  useEffect(() => {
+    const db = getDb();
+    if (!db) return;
+    const q = query(collection(db, 'wishes'), orderBy('createdAt', 'desc'));
+    const unsub = onSnapshot(
+      q,
+      (snap) => {
+        const list: Wish[] = [];
+        snap.forEach((docSnap) => {
+          const data = docSnap.data();
+          const wishName = typeof data.name === 'string' ? data.name : '';
+          const wishMessage = typeof data.message === 'string' ? data.message : '';
+          if (wishName && wishMessage) list.push({ id: docSnap.id, name: wishName, message: wishMessage });
+        });
+        setWishes(list);
+      },
+      () => {
+        /* read blocked / offline — list simply stays empty */
+      },
+    );
+    return () => unsub();
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -192,6 +224,38 @@ export default function GuestBook() {
                 {isSubmitting ? 'Đang gửi...' : 'Gửi lời chúc'}
               </button>
             </form>
+          </FadeIn>
+        )}
+
+        {wishes.length > 0 && (
+          <FadeIn direction="up" delay={0.15} className="mt-10">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              aria-controls="gb-wishes-list"
+              className="wc-btn wc-btn-outline"
+            >
+              {showAll ? 'Ẩn lời chúc' : `Xem tất cả lời chúc (${wishes.length})`}
+            </button>
+
+            {showAll && (
+              <ul id="gb-wishes-list" className="mt-6 flex flex-col text-left">
+                {wishes.map((wish) => (
+                  <li key={wish.id} className="py-4" style={{ borderBottom: '1px solid var(--wc-line)' }}>
+                    <p className="font-semibold" style={{ color: 'var(--wc-primary)' }}>
+                      {wish.name}
+                    </p>
+                    <p
+                      className="mt-1 whitespace-pre-line leading-relaxed"
+                      style={{ color: 'var(--wc-ink-soft)' }}
+                    >
+                      {wish.message}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
           </FadeIn>
         )}
       </div>
