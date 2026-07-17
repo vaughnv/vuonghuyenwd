@@ -18,7 +18,6 @@ const BASE_TITLE = `${COUPLE} — Thiệp cưới 09.08.2026`;
 const BASE_DESC =
   'Trân trọng kính mời bạn đến chung vui trong ngày trọng đại của Hùng Vương & Thu Huyền. Lễ Thành Hôn ngày 09.08.2026 — sự hiện diện và lời chúc phúc của bạn là niềm vinh hạnh cho gia đình chúng tôi.';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vuongxhuyen.love';
-const SHARE_VERSION = '20260716-4';
 const SHARE_IMAGE = `${SITE_URL}/images/album/PMN08846-facebook-v4.png`;
 
 export const dynamic = 'force-dynamic';
