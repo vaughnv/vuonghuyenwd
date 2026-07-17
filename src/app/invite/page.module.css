@@ -1,0 +1,128 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: var(--background);
+}
+
+.panel {
+  width: 100%;
+  max-width: 480px;
+  background: var(--wc-surface);
+  border: 1px solid var(--wc-line);
+  border-radius: var(--wc-radius-md);
+  box-shadow: var(--wc-shadow-sm);
+  padding: 28px 24px;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-family: var(--wc-font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--wc-ink);
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--wc-ink-soft);
+}
+
+.form,
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wc-ink);
+}
+
+.input {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 15px;
+  font-family: var(--wc-font-serif);
+  color: var(--wc-ink);
+  background: #fff;
+  border: 1px solid var(--wc-line);
+  border-radius: var(--wc-radius-sm);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--wc-primary);
+  outline-offset: 1px;
+  border-color: var(--wc-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--wc-radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.primaryBtn {
+  color: var(--wc-on-primary);
+  background: var(--wc-primary);
+  border: 1px solid var(--wc-primary);
+}
+
+.primaryBtn:hover {
+  background: var(--wc-primary-600);
+}
+
+.secondaryBtn {
+  color: var(--wc-primary);
+  background: transparent;
+  border: 1px solid var(--wc-primary);
+}
+
+.secondaryBtn:hover {
+  background: var(--wc-primary-soft);
+}
+
+.primaryBtn:focus-visible,
+.secondaryBtn:focus-visible {
+  outline: 2px solid var(--wc-primary);
+  outline-offset: 2px;
+}
+
+.success,
+.error {
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.success {
+  color: var(--wc-primary-700);
+}
+
+.error {
+  color: #a4362f;
+}
